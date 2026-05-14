@@ -415,6 +415,42 @@ Dá se také zapsat jako 4 dvojice hex čísla. Jako příklady endianness jsou 
 
 [Tady je to hezky vysvětlené](https://numeral-systems.com/ieee-754-divide/). Při dělení se jen pozor na to, že exponenty se od sebe odečítají a bias se přičítá!
 
+# Entropie
+
+## Shannonova formule
+
+$$
+H = -\sum_{k=1}^np_k\times\log_2(p_k)
+$$
+
+$n$ = Celkový počet unikátních symbolů.
+
+$p_k$ = Pravděpodobnost výstkytu konkretního znaku.
+
+Díky tomu zjistíme průměrné množství informace, které nese jeden znak v daném textu.
+
+## Hartleyho formule
+
+$$
+H_{max}=\log_2(n)
+$$
+
+$n$ = Celkový počet unikátních symbolů.
+
+Díky tomuto zjístíme maximální možné množsví informace na jeden znak.
+
+## Redundance
+
+$$
+R = 1-\frac{H}{H_{max}}
+$$
+
+Zjístíte kolik procent textu tvoří nadbytečné informace.
+
+## Půlení intervalů
+
+Kdyby bychom měli uhodnout číslo v intervalu od 1
+
 ---
 
 **Poznámky při učení:**
