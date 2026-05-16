@@ -473,10 +473,6 @@ Kde:
 - $t$ = Čas
 - $\varphi$ = Fázový posun (počáteční posunutí vlny, udává se v radiánech)
 
-$$
-\omega = 2 \pi f
-$$
-
 ## Vzorkovací frekvence
 
 $$
@@ -594,9 +590,3 @@ Zakódování slova: $z = v\times G$
 2. Sčítám čísla na liché pozici a násobím 3x.
 3. Sečtu krok 1. a 2.
 4. Výsledek ze 3. + x = číslu dělitelné 10. x = kontrolní číslo.
-
----
-
-**Poznámky při učení:**
-- Dokument 3 mi zatím dělal největší problém (projeď s Vojtou) prostě **pravděpodobnost**
-- Grafy mi dělají problém
