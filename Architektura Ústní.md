@@ -20,6 +20,8 @@ Někdo napsal, že před ústní na chodně se můžeš podívat na mobil a zkus
 
 Prý Syslovi záleží na principech fungování komponent, obrázky a schémata, že prostě vidí, že rozumíš tomu, jak to funguje. Neučená čísla, přenosové rychlosti a letopočty už pro něj nejsou tak podstatná.
 
+\+ Jsem našel [odkaz](https://www.youtube.com/playlist?list=PLna0OP34t8GDlYFsdMnu449rGmv7x9AEn) na jeho přednášky, které někdo natáčel před 4. roky. Někdo psal, že je to užitečné pro pochopení, jak komponenty fungují.
+
 ## Nejčastejší témata
 
 | Téma                                | Podtéma                                                          | Zmíněno na DC        |
