@@ -1,26 +1,26 @@
 # Analýza před zkouškou z DC
 
-Zkouška probíha tak, že dostaneš 2 témata a máš 40 min. na to, abys napsal co víš. Pak jdeš ven ze zkouškové místnosti. Postupně si lidi volá, opravuje to co máš na papíře a doptává se na otázky. Když je známka nerozhodná může se zeptat i na _doplňující_ otázku mimo téma. Ústní část trva 15-20 min.
+Zkouška probíhá tak, že dostaneš 2 témata a máš 40 minut na to, abys napsal, co víš. Pak jdeš ven ze zkušební místnosti. Postupně si vyvolává lidi, opravuje to, co mají na papíře, a doptává se na otázky. Když je známka nerozhodná, může se zeptat i na _doplňující_ otázku mimo téma. Ústní část trvá 15–20 minut.
 
 Ke zkoušce je třeba si vzít **psací potřeby, papíry a průkaz studenta**.
 
 Prý je ideální popsat jednu stranu A4 na jedno téma...
 
-Učitel si potrpí na tom, ať je vše popsáno dopodrobna.
+Učitel si potrpí na tom, aby bylo vše popsáno dopodrobna.
 
-Na DC lidi říkají, že z té úvodní prezentace (historie, atd..) tam nic nebude. Taky říkají, že se stačí dopodrobna naučit z prezentací. Jeden týpek dostal takto i za A :D
+Na DC lidi říkají, že z úvodní prezentace (historie atd.) se většinou nic nevyžaduje. Taky říkají, že stačí dopodrobna se naučit prezentace. Jeden student takto dokonce dostal A.
 
-Dává i mínusové body za chybné informace. Například, když nakreslíš schéma špatně, tak ti to prý může pokazit výsledek (říká to prý Sysel u ústní).
+Dává také záporné body za chybné informace. Například když nakreslíš schéma špatně, může ti to pokazit výsledek (říká prý Sysel u ústní části).
 
-Prý chodí a kontroluje, takže taháček se prý nedá použít. Ale na druhou stranu to jeden borec opsal celé z hodinek.
+Prý chodí a kontroluje, takže tahák se nedá použít. Na druhou stranu jeden student opsal vše z hodinek.
 
-Témata se na raních termínech a odpoledních mohou lišit.
+Témata se na ranních a odpoledních termínech mohou lišit.
 
-Někdo napsal, že před ústní na chodně se můžeš podívat na mobil a zkusit si rychle ještě dané téma zopakovat.
+Někdo napsal, že před ústní zkouškou na chodbě se můžeš rychle podívat do mobilu a zopakovat si dané téma.
 
-Prý Syslovi záleží na principech fungování komponent, obrázky a schémata, že prostě vidí, že rozumíš tomu, jak to funguje. Neučená čísla, přenosové rychlosti a letopočty už pro něj nejsou tak podstatná.
+Prý Syslovi záleží na principech fungování komponent, na obrázcích a schématech — chce vidět, že rozumíš tomu, jak to funguje. Naučená čísla, přenosové rychlosti a letopočty pro něj nejsou tak podstatné.
 
-\+ Jsem našel [odkaz](https://www.youtube.com/playlist?list=PLna0OP34t8GDlYFsdMnu449rGmv7x9AEn) na jeho přednášky, které někdo natáčel před 4. roky. Někdo psal, že je to užitečné pro pochopení, jak komponenty fungují.
+\+ Našel jsem [odkaz](https://www.youtube.com/playlist?list=PLna0OP34t8GDlYFsdMnu449rGmv7x9AEn) na jeho přednášky, které někdo natáčel před čtyřmi lety. Někdo psal, že jsou užitečné pro pochopení fungování komponent.
 
 ## Nejčastejší témata
 
@@ -44,13 +44,13 @@ Prý Syslovi záleží na principech fungování komponent, obrázky a schémata
 | Paměti obecně                       |                                                                  | Součet RAM + HHD/SSD |
 |                                     | Hierarchie                                                       | 1                    |
 | Grafická karta                      |                                                                  | 23                   |
-|                                     | schema                                                           | 2                    |
+|                                     | schéma                                                           | 2                    |
 |                                     | části                                                            | 8                    |
 |                                     | pipeline (jen popis bez obrázku)                                 | 12                   |
 |                                     | jak funguje 3D (pipeline)                                        | 5                    |
-|                                     | dac, atd...                                                      | 1                    |
+|                                     | dac, atd.                                                        | 1                    |
 |                                     | jak se vytváří obraz                                             | 1                    |
-|                                     | grafické sub systémy                                             | 3                    |
+|                                     | grafické subsystémy                                               | 3                    |
 | Základní deska                      |                                                                  | 17                   |
 |                                     | schéma                                                           | 6                    |
 |                                     | bios/uefi                                                        | 6                    |
@@ -71,14 +71,14 @@ Prý Syslovi záleží na principech fungování komponent, obrázky a schémata
 |                                     | Konektory                                                        | 1                    |
 |                                     | Vrstvy                                                           | 1                    |
 |                                     | Typy přenosu                                                     | 1                    |
-| Sekudární uložné zařízeni (HDD/SSD) |                                                                  | 8                    |
+| Sekundární úložné zařízení (HDD/SSD) |                                                                 | 8                    |
 |                                     | komplet jak funguje hdd/ssd                                      | 1                    |
 |                                     | jednotlivé části                                                 | 1                    |
 |                                     | úrovně                                                           | 1                    |
 | LCD display (doplňující)            |                                                                  | 2                    |
 | Optická média (doplňující)          |                                                                  | 1                    |
 | Co je mikrooperace (doplňující)     |                                                                  | 1                    |
-| Plugun and Play (doplňující)        |                                                                  | 1                    |
+| Plug and Play (doplňující)          |                                                                  | 1                    |
 
 ## Témata seřazená podle pravděpodobnosti
 
@@ -88,18 +88,287 @@ Prý Syslovi záleží na principech fungování komponent, obrázky a schémata
    1. Polovodičové paměti (8,5 %)
    2. Sekundární uložiště (6,8 %)
 4. Základní deska (14,4 %)
-5. Sběrnice (10,2 %) 
+5. Sběrnice (10,2 %)
 7. USB sběrnice (8,5 %)
 8. Tiskárny (3,4 %)
 9. LCD display - doplňující
-10. Opatická média - doplňující
+10. Optická média - doplňující
 11. Co je mikrooperace - doplňující
 12. Plug and Play - doplňující
 
 # CPU
 
-Toto schéma chce znát:
+## Základní informace
+
+Nepostradatelná součást počítače.
+
+Jedná se o integrovaný obvod, který je v dnešní době velmi složitý; zajišťuje výpočty systému a vykonává instrukce. Instrukce, které vykonává, se liší podle architektury procesoru.
+
+V současnosti se nejčastěji používá instrukční sada x86_64. x86 vychází z číslování procesorů u Intelu — první IBM PC měl procesor 8086. 64bitové rozšíření zavedla společnost AMD.
+
+Procesor do značné míry ovlivňuje výkon celého počítače.
+
+V běžném desktopovém PC je umístěn na základní desce v patici (socket).
+
+Existují 3 základní typy socketů:
+- **Pin Grid Array (PGA)**: procesor obsahuje piny, které zapadnou do socketu základní desky.
+  - Nevýhody: piny jsou náchylné k poškození (lze je snadno ohnout).
+  - Výhody: piny se dají narovnat, i když je to složité.
+- **Land Grid Array (LGA)**: u Intelu procesor obsahuje plošky, které doléhají na pružinky v socketu základní desky.
+  - Výhody: výrobně jednodušší a procesor není náchylný k poškození.
+  - Nevýhody: pružinky v socketu na základní desce se špatně opravují.
+- **Ball Grid Array (BGA)**: čip je připájen přímo na desku; kontakty vypadají jako malé kuličky (balls).
+  - Nevýhody: uživatelsky nevýměnný, nelze upgradovat.
+
+## Proces výroby čipů/procesorů
+
+Proces výroby má přes 300 kroků:
+- Získání **křemíku** z písku.
+- Roztavení a vytvoření **monokrystalu** (ingot).
+- Ingot se nařeže na plátky (wafery), které se leští, dokud není povrch dokonale rovný.
+- Fotolitografií, leptáním a osvětlováním se vytvářejí struktury tranzistorů.
+- Na ně se vytvářejí vodivé cesty propojující tranzistory.
+- Wafer se rozřeže na jednotlivé čipy (die).
+- Čipy jsou testovány a ověřeny.
+- Čipy se zabudují do pouzder a balí se.
+- Hodnocení výkonu procesoru určuje maximální frekvenci a označení čipu.
+
+Samotný procesor (včetně pouzdra a heat spreaderu) je mnohem větší než samotné die. Heat spreader slouží k efektivnímu odvádění tepla z čipu směrem k chladiči.
+
+Při výrobě čipů se klade velký důraz na čistotu prostředí.
+
+## Parametry ovlivňující výkon
+
+- **Frekvence (rychlost) [Hz]:** Vyšší frekvence nemusí nutně znamenat lepší procesor. Například 4 GHz neznamená 4 miliardy sčítacích operací, protože jednotlivé operace se skládají z více kroků.
+- **Počet jader (cores):** Na die může být integrovaných více jader, což umožňuje zpracování více úloh současně.
+- **Šířka slova (8, 16, 32, 64) [bity]:** Dnes je standard 64 bitů. To znamená, že v jednom taktu můžeme pracovat s 64 bity; registry obvykle odpovídají této šířce.
+- **Vyrovnávací paměť (cache) [Bajty]:** Cache je rychlejší než hlavní paměť, zajišťuje plynulý přísun instrukcí a dat a bývá umístěna přímo na čipu (on-die).
+- **Počet instrukčních kanálů (pipeline):** Popisuje, jak instrukce procházejí procesorem a jak jsou zpracovávány.
+- **Počet a typ výkonných jednotek:** Podrobněji níže.
+- **Velikost adresovatelné paměti [Bajty]:** První procesor 8086 => $2^{20}$ = 1 MB. Dnešní systémy běžně podporují až $2^{40}$ (~1 TB); $2^{64}$ je pro většinu použití zatím nadbytečné.
+
+## Mooreův zákon
+
+Popisuje přibližné zdvojnásobení počtu tranzistorů na die přibližně každé dva roky (s každou generací čipů).
+
+![moorův graf](./Screenshot%202026-05-16%20at%2011.32.58.png)
+
+Na grafu lze vidět, že navyšování frekvence se nevyplatí, protože vzniká větší teplo, které snižuje efektivitu. To samé platí u napájení, kde pak také vzniká problém s chlazením.
+
+Navýšení počtu jader zajišťuje efektivní zvýšení výkonu.
+
+## Zjednodušený popis fungování
+
+Procesor zpracovává program zapsaný ve strojovém kódu. Instrukce ve strojovém kódu jsou zapsané binárně a skládají se z operačního kódu (`opcode`), `operand 1` (informace, kde v paměti jsou data) a `operand 2` (informace, se kterým registrem se bude pracovat).
+
+![strojová instrukce](./Screenshot%202026-05-16%20at%2011.41.44.png)
+
+Délka/velikost instrukce v architektuře x86_64 se může lišit v rozmezí od 1 B až 11 B.
+
+<div style="display: flex;">
+<div>
+
+Důležité části procesoru jsou:
+- **Registry:** Instrukce a data se načítají z operační paměti a přes interní sběrnice a registry vstupují do dekóderu.
+- **Dekóder instrukcí:** Určí typ instrukce a její operandy a předá mikrooperace do řadiče.
+- **Řadič:** Na základě instrukce řídí práci výkonných jednotek a alokaci zdrojů.
+- **Výkonné jednotky:** Zde se provádějí aritmetické, logické a další operace.
+
+</div>
+<img width="200" alt="schema instrukce" src="./Screenshot%202026-05-16%20at%2011.53.22.png">
+</div>
+
+## Instrukce
+
+Vykonávají se postupně. Například sečtení dvou čísel se skládá z několika instrukcí:
+
+- **LOAD A, R1:** Hodnota A se načte do registru R1.
+- **LOAD B, R2:** Hodnota B se načte do registru R2.
+- **ADD R1, R2, R3:** Sečtou se obě hodnoty a uloží se do R3.
+- **STORE R3, C:** Obsah registru R3 se uloží na adresu v paměti C.
+- **LOAD next instruction:** Načte se další instrukce.
+
+## Architektura CISC vs RISC
+
+80 % vykonávaných instrukcí je jednoduchých a 20 % komplexních.
+
+- CISC (Complex Instruction Set Computer) — vzniklo vývojem Intelu, jak přidávali nové instrukce:
+  - Jednoduchá instrukce může trvat například 4 cykly, komplexní až 8 cyklů (záleží na mikroarchitektuře).
+  - Rozsáhlá instrukční sada s proměnlivou délkou a dobou vykonávání.
+  - U x86 je relativně malý počet registrových zdrojů dostupných pro programátora.
+- RISC (Reduced Instruction Set Computer):
+  - Redukovaná sada jednoduchých instrukcí (jde o jednoduchost a konzistenci operací, ne pouze o počet instrukcí).
+  - Instrukce mají stejnou délku a často kratší dobu provedení.
+  - Komplexní operace se skládají z více jednoduchých instrukcí.
+  - Load-store architektura.
+
+## Instrukční kanály - pipelines
+
+Instrukce odpovídají procesoru Pentium z roku 1993 (CISC):
+- **PF (Prefetch):** Výběr instrukce (načtení z paměti podle hierarchie).
+- **D1 (Decode1):** Určí délku a typ instrukce.
+- **D2 (Decode2):** Určí se adresa operandů, se kterými instrukce pracuje.
+- **EX (Execution):** Vlastní provedení instrukce.
+- **WB (Write Back):** Zápis výsledků zpracované instrukce.
+
+Instrukční kanál RISC procesorů:
+- **Instruction fetch:** vyzvednutí instrukce.
+- **Decode:** dekódování instrukce.
+- **Execute:** provedení instrukce.
+- **Memory Access:** přístup k paměti (čtení/zápis).
+- **Commit:** zápis výsledku.
+
+Hloubka pipeline (počet stupňů) u novějších procesorů narůstá, ale celková výkonost závisí i na taktovací frekvenci; více stupňů může znamenat vyšší frekvenci a kratší dobu mezi takty.
+
+### Subskalární (sekvenční) zpracování
+
+Zpracování jedné instrukce najednou — instrukce postupně procházejí všemi fázemi pipeline.
+
+![subskalární příklad](./Screenshot%202026-05-16%20at%2015.01.12.png)
+
+Tento režim je neefektivní a používaly ho pouze velmi staré procesory.
+
+### Skalární (zřetězené) zpracování
+
+Každá část CPU může v daném okamžiku zpracovávat jinou instrukci ve své fázi pipeline.
+
+![skalární příklad](./Screenshot%202026-05-16%20at%2015.03.38.png)
+
+Tímto způsobem se zvýší efektivita zpracování instrukcí.
+
+### Superskalární zpracování
+
+Superskalární procesory dokážou najednou dekomponovat a vykonávat více instrukcí paralelně v jednom cyklu.
+
+![superskalární příklady](./Screenshot%202026-05-16%20at%2015.07.25.png)
+
+Moderní procesory podporují mnohem více než dva paralelní kanály, jak je znázorněno na obrázku.
+
+Intel Pentium byl jedním z prvních komerčně úspěšných superskalárních procesorů.
+
+### Problémy
+
+- **Datový hazard:** Nastává, když instrukce závisí na výsledku předchozí instrukce, který ještě není dostupný.
+- **Řídící hazard (branch):** Pokud procesor přednačte instrukce z větve, která se nakonec neprovede, musí je zahodit (_pipeline flush_). Moderní procesory tento problém částečně řeší predikcí větvení.
+- **Strukturální hazard:** Konflikty při sdílení hardwarových zdrojů mezi různými fázemi pipeline, což může způsobit _pipeline stall_.
+
+**Pipeline flush:** je vyprázdnění instrukčního kanálu.
+**Pipeline stall (bublina):** zpoždění zpracování následující instrukce.
+
+### Minimalizace vlivu bublin (pipeline stalls):
+
+- **Predikce větvení (branch prediction):** používá se nejen u podmínek if/else, ale také u smyček. Moderní prediktory mohou dosahovat vysoké přesnosti (např. ~97 % u některých opakujících se vzorů).
+![predikce větvení schema](./Screenshot%202026-05-16%20at%2015.37.10.png)
+Skok znamená, že výsledek podmínky byl _false_.
+- **Superskalarita + vícenásobné načítání a dekódování.**
+- **Simultaneous Multithreading (SMT):** AMD tuto technologii označuje SMT, Intel pak Hyper-Threading (HT).
+- **Vykonání mimo pořadí (Out-of-Order execution):** Instrukce mohou být vykonávány v jiném pořadí, než ve kterém byly vydány, aby se lépe využily dostupné zdroje.
+- **Spekulativní provádění instrukcí (Speculative execution):** Místo toho, aby procesor stál a čekal na podmínku, začne přednačítat a předvykonávat instrukce.
+- **Přednačítání (Prefetching):** Například se z RAM do cache načítají data ze sousedních adres poblíž místa, odkud jsme právě četli, což může zrychlit opakovaný přístup (i když někdy se načtou i nepotřebná data).
+- **Využití cache a bufferů.**
+- **Non-temporal stores.**
+
+## Základní schéma CPU (bude chtít u zkoušky)
+
 ![Základní CPU Schéma](./image0.jpg)
+
+- **Instruction fetcher:** Načte instrukci.
+- **Instruction decoder:** Dekóduje instrukci.
+- **Registers + ALU:** Provede se operace s hodnotami načtenými z registrů.
+- **Registers:** Výslednou hodnotu uložíme do registrů.
+
+Jednotky na obrázku se využívají podle `opcode`.
+
+Schéma vpravo je skalární; aby bylo superskalární, musely by jednotlivé části být minimálně dvakrát.
+
+## Výkonné jednotky
+
+### Aritmeticko-logická jednotka (ALU):
+
+Provádí aritmetické a logické operace primárně s celými čísly. Např. sčítání, odčítání, násobení, dělení, AND, OR, XOR, NOT.
+
+### Floating-point jednotka (FPU):
+
+Provádí operace s čísly s desetinou čárkou.
+
+### Load/store
+
+Načítá/ukládá data z/do paměti do/z registrů procesoru.
+
+### Vektorová jednotka
+
+Provádí operace na vektorech dat. Používá se pro velká množství dat, zpracování obrazu, simulace a AI.
+
+## Moderní procesor
+
+- **System on Chip (SoC):** Integrovaný obvod, který zahrnuje více částí systému do jediného čipu (integrovaná grafická karta, cache, memory controller atd.).
+- **Více jader:** Vše, co jsme probrali (schémata a zpracování instrukcí, skalárnost) bylo dosud řešeno na jednom jádře.
+- **L3 cache:** Sdílená pro všechna jádra.
+
+![schéma procesoru jako celku](./Screenshot%202026-05-16%20at%2016.28.51.png)
+
+## Schéma jednoho jádra
+
+- **Modrá (Front-end):** Starají se o načtení a dekódování instrukcí.
+- **Červená (Back-end):** Výkonná část.
+- **Zelená (paměťový subsystém):** Načítá a ukládá data z paměti.
+
+![jedno jádro](./Screenshot%202026-05-16%20at%2016.30.46.png)
+
+- **L1D:** Datová cache.
+- **L1I:** Instrukční cache.
+- **L2:** Cache pro data i instrukce.
+
+### Front-end
+
+**Makroinstrukce:** ze sady x86_64 CISC
+**Mikroinstrukce (RISC):** Dekódery se tvoří z makroinstrukcí
+
+Dekóder dodává dostatečné množství mikrooperací (μOPs), aby minimalizoval bubliny. O plnění fronty se stará cache pro mikrooperace nebo dekódery a načítací jednotky.
+
+Dekódery dělíme na jednoduché (těch je více, protože jednoduchých operací je ~80 %) a komplexní (které dekódují CISC instrukce).
+
+### Back-end
+
+Do ReOrder bufferu vstupuje několik mikrooperací v každém taktu. Ten umí přidělovat a přejmenovávat registry.
+
+Potom jsou mikrooperace odesílány do scheduleru, který je připojen k portům; každý port je připojen ke skupině výkonných jednotek.
+
+Mikrooperace jsou prováděny mimo pořadí (out-of-order), aby se zvýšila efektivita, ale může nastat datový hazard.
+
+Výsledky jsou zasílány do Reorder Bufferu i do scheduleru, aby závislé mikrooperace měly své operandy co nejdříve k dispozici.
+
+### Paměťový subsystém
+
+Stará se o načítání a ukládání do paměti.
+
+Data se do `L1D` načítají spekulativně.
+
+## Paralelismus
+
+Probíhá v několika úrovních:
+1. **Thread Level Parallelism (TLP):** Více jader/procesorů. Program se rozdělí na více vláken a běží na více jádrech současně.
+2. **Instruction Level Parallelism (ILP):** Superskalarita, mikroarchitektura. Vykonávání více instrukcí současně na jednom vláknu.
+3. **Data Level Paralelism (DLP):** Založeno na vektorových jednotkách, díky čemuž získáme více výsledků najednou.
+
+## Technologie Hyper-Threading
+
+- Současný běh více vláken je založen na využití bublin v instrukčním kanálu (pipeline stalls).
+- Navýšení výkonu je proměnlivé (převážně pomáhá při mnoha malých/rychlých operacích).
+- Počet výkonných jednotek je stejný, ale je potřeba zdvojnásobit některé registrů pro oddělení kontextů.
+
+## Tepelná ochrana
+
+Nové čipy mají ochranu, aby se procesor nepřehřál, často v podobě vkládání instrukcí `nop`. Když je chladič špatně nainstalovaný, procesor nemusí využívat plný výkon.
+
+## Co chce slyšet u zkoušky
+
+- [ ] Základní popis a princip procesoru
+- [ ] Schéma a popis instrukčního kanálu (pipeline)
+- [ ] Vysvětlení subskalárity, skalárity a superskalárity
+- [ ] Schéma a popis jádra (front-end, back-end, paměťový subsystém)
+- [ ] Postup zpracování instrukce
+- [ ] Zmínit výkonné jednotky při schématu
 
 ![CPU co chce dle lidí](./Screenshot%202026-05-16%20at%208.17.40.png)
 
