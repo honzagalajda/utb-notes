@@ -473,6 +473,313 @@ Dnes to tedy prochází přes stejné výkonné jednotky jen se liší typ výpo
 
 - [ ] Princip fungování LCD monitoru
 
+# Paměti
+
+## Hierarchie
+
+1. **Registry:** Přístupová rychlost 1 takt procesoru. Velikost 100B; Nejrychlejší, uloží nejméně informací, největší cena/MB.
+2. **Cache:** L1I, L1D, L2, L3. Velikost v KB.
+3. **Oprační paměť:** DRAM. Velikost v GB.
+4. **Sekundární paměť:** HHD/Flash (SSD). Velikost v TB.
+5. **Teciální paměť:** Disky, DVD, RAID, NAS. Často médium může být výměnné. Velikost až v PB; Nejpomalejší, uloží nejvíce informací, nejmenší cena/MB.
+
+## Základní parametry paměti
+
+- **Kapacita:** v bitech u _registerů_ u zbytku v Bajtech.
+- **Přístupová doba:** Jak dlouho nám trvá než dokážeme do paměti přistoupit. Od nanosekund až stovky milisekund.
+- **Přenosová rychlost:** Rychlost přenosu informace z paměti. V B/s. Záleží na typu paměti a sběrnici.
+- **Statičnost/dynamičnost:** Statické dokáži informaci uchovat v čase. Dynamické potřebují informaci neustále obnovovat.
+- **Energetická závislost:** Jestli informaci udrží jen po dobu, kdy je napájena.
+- **Přísup (sekvenční/přímy):** Přímy = kdykoliv jsme schopni přistoupit ke všem částem paměti. Sekvenční = typicky páska.
+- **Desktriktivnost při čtení:** Když informaci přečteme, tak se zničí. Typicky DRAM.
+- **Spolehlivost:** V dnešní době se zlepšuje. Jedná se o to, jak spolehlivě dokáže médiu s časem uchovat paměť bez jeho ztráty.
+- **Cena za bit:** Dá se zde také vztáhnout mooerův zákon.
+
+## Registry
+
+- Paměťové bloky s velmi malou kapacitou.
+- Omezený počet (x86_64 kolem 16 64 bitových registrů); Velikost 8, 16, 32 až 64 b i více.
+- Slouží pro ukládání mezivýsledků a informací nutných pro řízení činnosti procesoru.
+- Jedná se o paměť využívanou prakticky všemi instrukcemi.
+- Přístupová doba odpovídá rychlosti jádra procesoru. 1 takt procesoru.
+
+### Typy
+
+- **Uživatelský přístupné:** datové, adresové, obecné a příznakové.
+- **Systémové:** masky přerušení, počáteční adresy tabulky stránek, režim supervizor/uživatel.
+- **Speciální vnitřní:** čítač instrukcí, registr instrukcí, paměťový datový buffer, paměťový adresový buffer.
+
+## Cache
+
+- Slouží k vyrovnávání rozdílu rychlostí mezi procesorem a operační pamětí.
+- Paměť, která ukládá instrukce a/nebo data, aby mohly být budoucí požadavky obslouženy rychleji.
+- Mouhou se zde nacházet duplikáty dat uložených jinde (např. z RAM) nebo výsledky dřívějšího výpočtu.
+  - **Write-trough:** Zápis se provádí synchronně jak do cache, tak do operační paměti.
+  - **Write-back:** zápis se provádí pouze do cache. Zápis do hlavní paměti je doložen, dokud nemají být data v cache nahrazena novým obsahem.
+- Implementováno jako bloky paměti (cache lines).
+- **Cache hit:** Nalezneme informaci v cache. 
+- **Cache miss:** Informaci jsme nenašeli, tak jdeme do vyšších úrovní paměti (např. RAM) a přeneseme ji do vyrovnávací paměti.
+- **Princip lokality:** Pokud přistupujeme k hodnotě v paměti, tak s velkou pravděpodobností budeme přistupovat i k okolním informacím. To se využívá u _cache miss_.
+- **Efektivita**: 98 % až 99 %.
+- **Úrovně vyrovnávací paměti:** L1I, L1D, L2 a L3
+- **Buffer vs. Cache:** Buffer slouží k tomu, že do něj něco v určitém pořadí nejprve nahrajeme a potom to z něj v nějakém pořadí nahráváme nebo načítáme někam jinam. Do cache zapisujeme a načítáme z ní kdy potřebujeme.
+
+## Asociativita cache
+
+Určuje způsob mapování bloků z RAM do bloků v cache.
+
+![asociativita cache](./Screenshot%202026-05-17%20at%209.37.51.png)
+
+- **Přímo mapovaná:** Přímo z indexu bloku určuje, ve kterém místě se blok může nacházet.
+- **Plně asociativní:** Blok se může nacházet kdekoliv.
+- **n-cestná (n-way):** n - je vetšinou 2, 4, 8, 16
+
+## Vnitřní paměti
+
+<div style="display:flex; align-items:center;">
+<div>
+
+- Sem patří hlavně operační paměti.
+- Jedná se o matici paměťových buněk.
+- Každá buňka má kapacitu jeden bit.
+
+</div>
+<img width="350" alt="hyper threading" src="./Screenshot 2026-05-17 at 9.43.29.png">
+</div>
+
+## Přístup do paměti
+
+- Každá paměťová buňka je adresována. 
+- Adresa je přivedena na vstup dekodéru. Dekodér pak podle zadané adresy vybere jeden z adresových vodičů a nastaví na něm hodnotu $log1$. Hodnota projde/neprojde paměťovou buňkou na datový vodič. V případě, že hodnota projde přes paměťovou buňku, obdržíme na výstupu hodnotu 1. V opačném případě je na výstupu hodnota 0.
+- Jednotlivé typy paměti se liší způsobem realizace buňky.
+
+## ROM
+
+<div style="display:flex; align-items:center;">
+<div>
+
+- Určeny pouze pro čtení informací.
+- Informace pevně zapsány při jejich výrobě. Potom už obsah nelze měnit.
+
+</div>
+<img width="350" alt="hyper threading" src="./Screenshot 2026-05-17 at 9.51.38.png">
+</div>
+
+## PROM
+
+<div style="display:flex; align-items:center;">
+<div>
+
+- Po vyrobení neobsahuje žádnou informaci. Obsahuje sáme 1.
+- Pouze jedenkrát lze provést zápis informace. Zápis funguje přepálením pojistky, čímž vytvoříme logickou 0.
+- Pak už slouží pouze jako ROM.
+
+</div>
+<img width="350" alt="hyper threading" src="./Screenshot 2026-05-17 at 9.53.07.png">
+</div>
+
+## EPROM
+
+- Lze provést zápis, a mazání pomocí UV záření.
+
+## EEPROM
+
+- Podobné chování jako paměti EPROM, ale mazání šlo provádět pomocí el. proudu.
+
+## Flash EEPROM
+
+<div style="display:flex; align-items:center;">
+<div>
+
+- Tato paměť se v dnešní době často využívá. Flash disky, SSD disky a uložení UEFI/BIOS
+- Data jsou ukládána v poli unipolárních tranzistorů s plovoucími hradly.
+- Ovládací hradlo (CG - control gate)
+- Plovoucí hradlo (FG - floating gate) 
+  - je izolované od okolí vrstvou oxidu. 
+  - Všechny přivedené elektrony jsou zde "uvězněny" a tím je uložená informace.
+- Elektrony na FG, modifikují (částečně ruší) elektrické pole přicházející z CG, což modifikuje prahové napětí ($U_t$) buňky.
+- **Čtení:** el. napětí na CG -> průchod proudu překládáme jako Log1
+- Není možné přistupovat k jednotlivým buňkám.
+- Zápis se provádí po celých stránkách (~2-16 kiB) a mazání po blocích (32-512 pages). Když smaže něco navíc, co jsme nechtěli musí to znovu nahrát.
+- Buňky mohou nabívat více stavů než jen 1 a 0 díky uložené úrovni el. náboje.
+  - **Single-level cell (SLC):** pouze 1 bit => 2 stavy.
+  - **Multi-level cell (MLC):** 2 bity => 4 stavy.
+  - **Triple-level cell (TLC):** 3 bity => 8 stavů.
+  - **Quad-level cell (QLC):** 4 bity => 16 stavů.
+- **Životnost:** omezený počet přepisů. Čím více urovní tím menší životnost.
+  - **Wear leveling:** řadič zařizuje distribuci zápisu na všechny paměťové buňky rovnoměrně, aby nedošlo k poškození jen určitých paměťových buňek a tím snížení maximální kapacity. 
+
+</div>
+<div>
+<img width="350" alt="hyper threading" src="./Screenshot 2026-05-17 at 11.24.39.png">
+<img width="350" alt="hyper threading" src="./Screenshot 2026-05-17 at 11.32.17.png">
+</div>
+</div>
+
+## Paměti RAM
+
+### SRAM
+
+- Jednou zapsaný bit je v buňce po celou dobu.
+- Bistabilní klopný obvod. Nutnost použití 4-6 tranzistorů pro jednu paměťovou buňku (vyšší cena na jeden bit).
+- POZOR neplést s SDRAM!!!
+
+### DRAM
+
+- Každá buňka je tvořena z trazistoru a kondenzátoru. Uchování informace pomocí náboje v kondenzátoru.
+- Nabití konenzátoru odpovídá uložení jednoho bitu.
+- Jedná se typ destruktivní paměti (čtení). A proto je zápis rychlejší než čtení.
+- Náboj má tendenci se vybíjet i v době, kdy je paměť připojena ke zdroji napájení. Je nutnost provádět tzv. refresh, ten se provádí po celých řádcích.
+- Dneska se nejčastěji používají paměti typu _DDR5 SDRAM_.
+
+### SDRAM (Synchronní dynamické RAM)
+
+- Hodinový signál, který slouží k časování, aby běh a jednolivé akce byli synchronizovány.
+- Paměťový čip jsou složitější:
+  - Rozšiřuje se protokol použitý pro přenosy dat z/do paměti.
+  - Čipy většinou dokáží automaticky provádět refresh.
+- **Burst režim:** Přenos většího bloku data.
+
+### DDR
+
+<div style="display:flex; align-items:center;">
+<div>
+
+- Lepší využití hodinového signálu.
+- Používá se vzestupná i sestupná hrana hodinového signálu.
+- Použití této techniku u sběrnic a pamětí.
+- DDR neznamená typ paměti, ale způsob přenosu.
+
+</div>
+<img width="350" alt="hyper threading" src="./Screenshot 2026-05-17 at 12.01.16.png">
+</div>
+
+### Fyzické uspořádání
+
+![fizické uspořádání RAM 1](./Screenshot%202026-05-17%20at%2012.07.55.png)
+
+![fizické uspořádání RAM 2](./Screenshot%202026-05-17%20at%2012.08.09.png)
+
+### Časování pamětí
+
+- DRAM pracují v jednotkách nanosekund.
+- **RAS precharge:** zpoždení po výběru paměti do adresa řádku. Ustálení stavu signálů před adresováním.
+- **RAS to CAS:** Zpoždění mezi výběrem řádku a adresací sloupce.
+- **CAS nebo CL:** Adresace sloupce. Zpoždění na vstupu nebo výstupu, poté lze data číst nebo zapisovat. Základní prodleva v počtu cyklů od zadání příkazu ke čtení k obdržení dat.
+- **tRAS:** Doba nutná na ponechání aktivní adresace řádku než se může přejít na adresaci dalšího řádku.
+
+### Ochrana
+
+V dnešní době spíše v rámci serverů.
+
+- **Kontrola parity:** 
+  - Paritní bit je kontrolou pro dalších 8 bitů. Sudá/lichá parita. 
+  - Modul musí mít dodatečné paměťové čipy, do kterých se ukládá paritní bit.
+- **Kód ECC - Error Correcting code (přidání kontrolních bitů):**
+  - Detekce a korekce 1 chybného bitu na 64b (šírka datové sběrnice).
+  - Umožňuje i detekci dvou chybných bitů (v tomto případě není možná oprava).
+  - Nutnost navýšit počet bitů (1 chip navíc), 64b -> 72b.
+  - **Mírné snížení výkonu:** 0,5-2%
+- Technologie Chipkill
+  - Rozpozná chybu v 8 bitech, korekce až ve 4 bitech.
+  - Nevyžaduje speciální moduly.
+  - Funkce závisí na podpoře chipsetu a BIOSu.
+
+### Chyby paměťových modulů
+
+- **Fyzické chyby**: obvykle je jediná možná oprava - vyměna celého modulu.
+- **Logické chyby:** většinou dočasné chyby, které se mouhou náhodně objevovat.
+  - Poruchy napájení (slabý zdroj).
+  - Nesprávný typ modulu nebo nevhodná rychlost modulu (přetaktování frekvence).
+  - Rušení raiovými signály - mohou vznikat falešné el. singály.
+  - Statické výboje.
+  - Výpadek časování - příčinou pomalé paměťové module nebo přetaktované procesory.
+
+## Pevné disky (sekundární paměť) - HDD
+
+- Média pro uchování dat.
+- Magnetický záznam dat na rotující plotny.
+- Pro adresaci používájí LBA adresaci.
+- Používané typy se dělí podle:
+  - Fizické velikosti
+  - Typy rozhraní (ATA, SCSI)
+  - Rychlosti otáčení (3600 rpm - 1500 rpm)
+  - Přístupová doba (4 - 25 ms)
+
+### Základní součásti pevného disku
+
+- **Plotny disku:** Vyrábí se ze slitiny hliníku a hořčíku. Plotna je pokryta tenkou vrstvou magnetické látky. Vzdálenost hlavy od plotny ~ 3 nm.
+- **Hlavy pro čtení a zápis:** Nikdy se plotny nedotýka, pluje nad ním. Obvkle jedna hlava pro čtení a jedno pro záznam. V klidu jsou hlavy zaparkovány - automatické parkování.
+- **Pohon hlav:** Pohybuje závěsem s hlavami napříč diskem. Elektromagnetický pohon. Přesné nastavení nad požadovanou stopou se používá zpětná vazba.
+- **Pohon ploten disku:** Motorem přímo připojeným k hřídeli. Konstatní otáčky a bezvibrační chod (díky fluidním ložiskám).
+- **Vzduchové filtry:** 
+  - **Recirkulační:** Zachytávání malých částic uvnitř disku.
+  - **Barometrický:** K vyrovnávání tlaku mezi vnějším a vnitřním prostředí.
+- **Řídící deska:** Plohování a pohon hlav, pohon disku, předávání dat do řadiče a umístění Cache paměti - buffer.
+- **Kabely a konektory:** Napajecí konekor (3.3V, 5V a 12V) a datový konektor (záleží na typu disku).
+
+![HDD schema](./Screenshot%202026-05-17%20at%2014.58.29.png)
+
+### Geometri pevných disků
+
+- **Stopa (track):** Soustředné kružnice na disku. Číslované od kraje disku od nuly.
+- **Sektor (sector):** malá část stopy, nejmenší jednotka pro ukládání dat.
+- **Válec (cylinder):** Množina všech stop se stejným číslem na všech površích.
+
+![geometri disku](./Screenshot%202026-05-17%20at%2015.07.45.png)
+
+### Modulace dat při záznamu
+
+![modulace](./Screenshot%202026-05-17%20at%2015.20.48.png)
+
+- **FM modulace (Frequency Modulation):** O = PN; 1 = PP.
+- **MFM modulace (Modified Frequency Modulation):** 0 = PN v řetězci 00 || NN v řetězci 10; 1 = NP.
+- **RLL modulace (Run Lenght Limited):**
+  ![RLL modulace](./Screenshot%202026-05-17%20at%2015.26.03.png)
+
+![modulace](./Screenshot%202026-05-17%20at%2015.27.49.png)
+
+Moderní pevné disky používají většinou nějakou modifikaci RLL kódování. Poskytují větší úsporu a tím je umožněn záznam většího objemu dat na médium.
+
+### Metody navýšení hustoty zápisu
+
+![podelný/kolmý záznam](./Screenshot%202026-05-17%20at%2015.34.36.png)
+![Shingled zápis](./Screenshot%202026-05-17%20at%2015.36.32.png)
+
+### Konektory
+
+![konektory disků](./Screenshot%202026-05-17%20at%2016.05.33.png)
+
+### Technologie S. M. A. R. T.
+
+Předpovídání poruch pevných disků sledováním parametrů, jestli jsou vpořádku. Když nám s.m.a.r.t. hlásí chybu je třeba zálohovat neznamená to, že disk je třeba vyměnit.
+
+### Přístupová doba
+
+Čas, který disku zabere vyhledat informaci způsobený vystavováním hlaviček a rotační latenci ploten.
+
+### Parametry disku
+
+- **Kapacita:** Jednotky, desítky TB
+- **Velikost bufferu:** desítky, stovky MB
+- **Rozhraní:** SATA, SAS, ...
+- **Velikost sektoru:** 4 kB, 512 B
+- **Počet ploten, hlaviček:** 1-8
+- **Rychlost otáčení (RPM):** 3 600-15 000
+- **Přístupová doba:** 4-12 ms
+- **Propustnost dat:** > 100 MB/s
+- **Spotřeba (Idle & Read):** 3-7 & 5-12 W
+- **MTBF:** 300 000 – 1 500 000 hodin
+- **Workload:** 55 -550 TB/rok
+- **Start/stop:** 50 000 – 300 000
+- **Operační teplota:** 5-60 °C
+- **Teplotní gradient:** 25 °C/hod.
+- **Záruka:** 2-5 let
+
+## Co chce slyšet u zkoušky
+
+- [ ] Když chceš říct paměť DDR4 tak řekni celý název DDR4 SDRAM!
+
 # USB
 
 ![USB DC](./Screenshot%202026-05-16%20at%208.22.41.png)
