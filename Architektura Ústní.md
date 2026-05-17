@@ -374,7 +374,104 @@ Nové čipy mají ochranu, aby se procesor nepřehřál, často v podobě vklád
 
 # GPU
 
+## Grafické režim prace
+
+- **Textový:** Umožňuje zobrazovat pouze předem definované znaky (písmena, číslice, speciální znaky) a pseudograficke znaky (pro vykresolnování tabulek) - ASCII tabulka. Mohli jsme se s ním setkat v BIOSu nebo velki starých OS.
+- **Grafický:** Režim, ve kterém jsou informace zobrazovány pomocí jednotlivých pixelů (V tomto režimu je i CMD/Terminal).
+
+## Grafická karta
+
+![ukázka grafické karty](./Screenshot%202026-05-17%20at%206.35.54.png)
+
+Není nutnou částí pro fungování počítače.
+
+Dělíme na dedikovanou (samostatný HW) a integrovaná (grafická karta přímo v procesoru).
+
+### Části:
+
+- **GPU:** CPU posílá sadu instrukcí, kterou jsou zpracovány ovladačem grafické karty a vykonány procesorem karty. Oproti CPU má mnohem více jader, mnoho pipelines. Optimalizované pro vektorové/maticové výpočty. GPU zapisuje jednotlivé frames (obrazy) do frame bufferu.
+- **VRAM:** Potřebnou velikost ($width [px] \times height [px] \times  colorDepth[b/px] = frameBuffer[b]$) určuje maximální možné rozlišení a počet (hloubka) barev (v dnešní době se využívá hlouba True Color $2^{24}$b) - 2D. Integrovaná GK využívá RAM. Ve 3D větší nároky na pěměť (Z-buffer, textury).
+- **DAC (RAMDAC) převodník:** Bylo potřeba kdydysi pro VGA, protože bylo třeba převést dig. signál na analogový. Čím větší frekvence převodníku [MHZ] tím lépe. Každé staré výstupní rozhraní potřebuje svůj převodník.
+- **BIOS:** Paměť typu ROM. Obsahuje firmware všerně definicí grafických módů a obrazových fontů. Inicializace probíhá v průběhu inicializace počítače (jak UEFI nastartuje v celém PC, tak spouští tento ROM BIOS).
+- **Výstupní konektory:** HDMI, DP, DVI.
+- **Sběrnice:** připojená k MB (teď nejčasteji PCI-e).
+- **Napajení:** 6 / 8 pin. Sběrnice není schopná dodat dostatečný přísun W. PCI-e zvládne jen 75W.
+
+Složením se jedná téměř o samostatný PC. Ale pozor! Sám o sobě není schopná fungovat. 
+
+Pro využívání grafické karty v naší sestavě musíme nainstalovat driver.
+
+## Jak pracuje 3D
+
+- **Primitives:** Primitivní geometrické útvary (trojúhelník, čára, bod) - dají se z nich skálad složitější objekty.
+- **Vertex:** Vrcholy primitires. Jsou definovány umístěním v 3D prostoru (x, y, z). Mohou obsahovat i další volitelné vlastnosti jako barvy, textury, atd.
+- **Textury:** Dvourozměrné bitmapové obrázky (rastr) nebo povrchy určené k mapování primitiva. Větší nárky na VRAM.
+
+## Logická/grafická pipeline
+
+Pro využítí logické pipeline se využívají SW knihovny jako DirecX nebo OpenGL.
+
+<div style="display:flex; align-items:center;">
+<div>
+
+- Procesor odesílá vertexy do GK a ty vstupují do pipeline ke zpracování (Input Assembler), kde jsou vytvořeny primitives.
+- S vertexy je v 3D prostoru postupně manipulováno (Vertex Shader, Geometry Shader).
+- Pro zobrazení na monitoru je provedena rasterizace do 2D.
+- Finální snímek je uložen ve Frame Bufferu.
+
+</div>
+<img width="300" alt="hyper threading" src="./Screenshot%202026-05-17%20at%207.22.48.png">
+</div>
+
+### Části pipeline
+
+- **Input Assembler (IA):** Odpovědná za načítání vertexů z paměti GPU (Vertex Buffer) a následné sestavování primitives.
+- **Vertex Shader (VS):** Zpracovává všechny vertexy vytvořené IA. Pomocí VS můžeme s verty proamově manipulovat (transformovat) a vytvářet tak např. vlnění moře. Vertexy pouze posouvá (nepřidává nebo neodstraňuje) - vstupnem je jeden vertex a výstupe je opět jeden vertex.
+- **Tesselation (TS):** Není povinná! Rozděluje jednoduchý geometrický tvar do menších částí, což má za následek celkové zvýšení detailu vykreslovaného objektu.
+- **Geometry Shader (GS):** Není povinná! Používá se pro tvorbu srsti, vlasů, trávy. Výsledkem může být shaderu vertxů více, méně nebo také vůbec žádný (tvary mohou vznika, nebo i zanikat). Po průchodu je hotová úprava geometrického modelu.
+- **Stream Output (SO):** Není povinná! Umožňuje přesměrovat hotové vertexy zpět na začátek pipeline a prováět na nich opetovné manipulace v dalších průchodech.
+- **Rasterizace - Rasterizer (RA):** Převod 3D na 2D rastrovou mřížku, aby obraz mohl být zobrazen na monitoru. Z-buffer - uložiště pro informace o hloubce pixelu. Vylučování objektů z procesu rasterizace se říká Clipping.
+- **Pixel Shader (PS):** Úkolem je zjistit barvu příslušného pixelu, který mu zaslal RA. Vypočet ovlivňován barvou textury, světlem, atd... Výstup je pak detailnější/kvalitnější.
+- **Output Merger (OM):** Do Back Bufferu se ukládá finální frame. Double buffering = Back Buffer <=> Front Buffer (slouží k prezentaci smínku na monitoru).
+
+## Unifikované Shadery
+
+Sjednocují paralelní výpočty a Vertex, Geometry a Pixel shadery na stejných procesorech. Dřívější GPU měly pro každý typ zpracování vyhrazené samostatné procesory.
+
+![unifikované shadery schema](./Screenshot%202026-05-17%20at%207.56.34.png)
+
+Používají se protože jednotlivé shadery nemusely být zatíženy rovnoměrně. Záleželo na typu grafiky.
+
+Dnes to tedy prochází přes stejné výkonné jednotky jen se liší typ výpočtu, které povádí.
+
+## Co chce slyšet u zkoušky
+
+- [ ] Základní informace
+- [ ] Části GK
+- [ ] Pipeline 3D obrazu se schématem
+- [ ] K čemu je DAC převodník
+
 ![GPU pipeline](./Screenshot%202026-05-16%20at%208.18.58.png)
+
+# Monitory
+
+## CRT
+
+- Ze tří katod jsou emitovány elektronové svazky, které dopadají na stínítko obrazovky. Na luminofory dopadá paprsek a bod se rozsvítí.
+- Lidské oko při dostatečné frekvenci vnímá blikající bod jako stálé světlo.
+
+## LCD
+
+- Na začátku je homogenní podsvícení.
+- První polarizační filtr propouští vlnění v jedné rovině (např. vertikální); druhý filtr je otočen o 90° a propouští vlnění v rovině kolmém na první.
+- Mezi filtry jsou tekuté krystaly, které se otáčejí pomocí elektrod; to ovlivňuje, kolik světla následně projde druhým filtrem.
+- Mezi elektrodou a druhým polarizačním filtrem je RGB filtr, který ovlivňuje, jakou barvu zobrazíme.
+
+![LCD princip](./Screenshot%202026-05-17%20at%208.15.12.png)
+
+## Co chce slyšet u zkoušky
+
+- [ ] Princip fungování LCD monitoru
 
 # USB
 
