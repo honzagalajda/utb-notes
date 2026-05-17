@@ -779,6 +779,9 @@ Předpovídání poruch pevných disků sledováním parametrů, jestli jsou vpo
 ## Co chce slyšet u zkoušky
 
 - [ ] Když chceš říct paměť DDR4 tak řekni celý název DDR4 SDRAM!
+- [ ] Hierarchie
+- [ ] Polovodičové paměti (jak fungují, rozdělení/úrovně, kde se nachází a popsat schéma jedné podrobně)
+- [ ] Sekundární paměti (komplet jak funguje hdd/ssd, jednotlivé části, úrovně)
 
 # USB
 
