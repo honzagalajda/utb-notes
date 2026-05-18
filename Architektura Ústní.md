@@ -783,6 +783,112 @@ Předpovídání poruch pevných disků sledováním parametrů, jestli jsou vpo
 - [ ] Polovodičové paměti (jak fungují, rozdělení/úrovně, kde se nachází a popsat schéma jedné podrobně)
 - [ ] Sekundární paměti (komplet jak funguje hdd/ssd, jednotlivé části, úrovně)
 
+# Základní deska
+
+- Deska s vícevrstvými plošnými spoji osazená konektory pro procesor a další komponenty.
+- Obsahuje sestavy integrovaných obvodů (Chipset - Intel/AMD).
+- Na desce jsou komponenty promojovýny pomocí sběrnic pomocí sběrnic.
+
+## Základní součásti
+
+- Patice pro procesor
+- Regulátor napětí pro procesor
+- Čipová sada (Severní a jižní most) - severní můstek integrován do procesoru.
+- Čip pro vstupy a výstupy (Super I/O)
+- ROM BIOS (Flash ROM)/UEFI
+- Patice pro paměťové moduly
+- Sběrnice, sloty (PCI, AGP, PCIe, ...)
+- Baterie pro zálohování paměti typu CMOS
+
+## Schéma základní desky
+
+![Staré schéma základní desky](./Screenshot%202026-05-17%20at%2017.17.54.png)
+
+### Nové schéma
+
+![Nové schéma](./Screenshot%202026-05-17%20at%2017.29.57.png)
+
+- **System agent:** integrovaný severní můstek.
+
+## North bridge / Severní můstek / Systémový řadič / Memory Controler Hub
+
+- Určuje typ procesoru, druh paměti.
+- Obvod, který řídí společnou činnost procesoru, pamětí, obvodů čipové sady a grafické karty.
+- Generuje hodinové signály.
+- Vytváří adresy pro paměti RAM.
+- Generuje řídící signály a komunikuje s paměťovým subsystémem.
+- Zabezpečuje RESET systému po připojení el. napájení nebo stisku tlačíka reset.
+- Je napojen pomocí systémové sběrnice na řadič sběrnice.
+
+## South bridge / Jižní můstek / Řadič sběrnice / Input Controler Hub
+
+- Zabezpečuje komunikaci se standardními perifériemi jako je řadič disků, řadič USB, sběrnice PCI, další komunikační porty a také klávesnici a myš.
+
+## BIOS (Basic Input / Output System)
+
+- Základní vstupně/výstupní systém počítače.
+- BIOS je vždy první program, který se aktivuje po zapnutí počítače.
+- BIOS vytváří základní vrstvu abstrakce pro vyšší programy. Moderní OS ignorují a přistupují na HW přímo přes drivery.
+- Primární funkcí je identifikace a inicializace hardwaru a načtení zavaděče operačního systému.
+
+## UEFI (Unified Extensible Firmware Interface)
+
+- **Nahrazuje BIOS:**
+  - Větší a komplexnejší.
+  - GUI.
+  - Neběží již v 16 bit režimu, ale většinou 64b.
+  - Podpora GPT (disky vetší jak 2TB).
+  - **Podpora SecureBoot:** Umožňí zavedení pouze certifikovaného OS. Je možné ji vypnout.
+  - Umožňuje emulaci BIOSu.
+- Definuje dva typy služeb.
+  - **Boot services:** zajišťují spuštení počítače.
+  - **Runtime services:** služby, které běží a zpřístupňují v době běhu počítače.
+
+## Vrstvy
+
+![vrstvy](./Screenshot%202026-05-17%20at%2017.56.28.png)
+
+### Části, které souvisí s BIOS/UEFI
+
+- **BIOS:** Základní sada ovladačů, nutná mezi HW a SW při zavádění OS.
+- **POST (Power On Self Test):** Základní otestování procesoru, paměti, čipové sady, grafické karty.
+- **SETUP:** Slouží ke konfiguraci systému (taktování, boot sekvence, nastavení periferií, Hardware monitr - informace o teplotě, napětí, otáčky, atd..). Program s řadou nabídek spouštějící se v průběhu POSTu.
+- **SMBIOS (System Management BIOS):** Specifikace pro datové struktury údajů v BIOSu a přístupové metody k informacím souvisejících s BIOSem.
+- **Zavaděč (Bootstrap Loader):** Krátký program hledající hlavní spouštěcí sektor.
+
+## Uložení BIOSu
+
+- Prvně uložen v ROM, potom v EEPROM a dnes Flash ROM.
+- Nastavení z BIOSu se ukládá do NVRAM.
+
+## BIOS (Basic Input/Output System)
+
+1. Zapne se přívod napájecího napětí.
+   1. Vynulují se registry procesoru (protože by tam mohly zůstat nějaké data) a nastaví se programový čítač (registr, který udržuje adresu následující instrukci) na adresu F000h (hex).
+   2. Mikroprocesor začíná vykonávt program BIOS.
+2. BIOS aktuvuje POST - určí co všechno má počítač k dispozici (paměť, CPU, atd..) a jestli vše funguje správně. Když je něco špatně, tak na to upozorňuje sekvence pípnutí/bliknutí LED.
+3. Identifikace všech periferních zařízení - nejprve vyhledá zařízení typu Plug-and-Play.
+4. Vyhledání jednotky pro zavedení OS nebo pro načtení inicializačního programu.
+5. Sestavení tabulky systémových prostředků - přidělení nekonfliktní zdroje podle identifikovaných zařízení.
+6. Výběr a aktivace primárního vstupu a výstupu - klávesnice a monitor, atd.
+7. Vyhledání iných zařízení než Plug-and-Play - dta z jejich pamětí ROM.
+8. Vyřešení konfliktů zařízení.
+9. Konfigurace zvolého bootovacího zařízení.
+10. Aktivace zařízení Plug-and-Play - zavolá rutiny v jejich pamětech ROM.
+11. Start programu pro zavedení OS.
+12. Jednotka IPL zavede operační systém do paměti.
+13. BIOS předá řízení operačnímu systému.
+
+## BIOS vs UEFI
+
+![bios vs uefi](./Screenshot%202026-05-18%20at%2020.55.04.png)
+
+EUFI booj je rychlejší.
+
+## Co chce slyšet na zkoušce
+
+- [ ] Ideálně nakreslit schéma staré a nové a popsat co se změnilo. Popř. stačí jen nové, ale asi se pak dopta...
+
 # USB
 
 ![USB DC](./Screenshot%202026-05-16%20at%208.22.41.png)
