@@ -888,6 +888,8 @@ EUFI booj je rychlejší.
 ## Co chce slyšet na zkoušce
 
 - [ ] Ideálně nakreslit schéma staré a nové a popsat co se změnilo. Popř. stačí jen nové, ale asi se pak dopta...
+- [ ] BIOS/UEFI
+- [ ] Co je na desce (patice, south bridge, pce-e, RAM sloty, atd..)
 
 # USB
 
