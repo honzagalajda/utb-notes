@@ -1,11 +1,10 @@
 {
 	"nodes":[
-		{"id":"b8d1a3a346b3f1dd","type":"text","text":"Co je pro erasmus vše potřeba udělat?","x":220,"y":890,"width":250,"height":60,"color":"1"},
-		{"id":"5bf9dae1e1a5ac03","type":"text","text":"- [ ] Vyplnit [přihlášku](https://gaude.deusto.es/cosmos/Controlador/?apl=Uninavs&gu=a&idNav=inicio&NuevaSesionUsuario=true&NombreUsuarioAlumno=ALUMOVIN&destino=ALUMOVIN&idioma=en.GB&chl=S)\n- [ ] Napárovat si předměty (30 kreditů)","x":580,"y":880,"width":250,"height":80,"color":"6"},
+		{"id":"5bf9dae1e1a5ac03","type":"text","text":"- [x] Vyplnit [přihlášku](https://gaude.deusto.es/cosmos/Controlador/?apl=Uninavs&gu=a&idNav=inicio&NuevaSesionUsuario=true&NombreUsuarioAlumno=ALUMOVIN&destino=ALUMOVIN&idioma=en.GB&chl=S) ✅ 2026-05-19\n- [ ] Napárovat si předměty (30 kreditů)","x":580,"y":840,"width":250,"height":120,"color":"6"},
 		{"id":"ec762f18f49432cd","type":"text","text":"Jak vyřešit cestovní pojištění?","x":940,"y":890,"width":250,"height":60,"color":"1"},
 		{"id":"ef2e2a68f60accb3","type":"text","text":"Do února cca.\n- S kurzem od 20. srpna\n- Bez kurzu od 2. září","x":580,"y":990,"width":250,"height":140,"color":"5"},
 		{"id":"6ab67e8fbcaec5ea","type":"text","text":"Od kdy do kdy tam jedu?","x":220,"y":1030,"width":250,"height":60,"color":"1"},
-		{"id":"25237daba521ec44","type":"text","text":"- [ ] Zeptej se na unoverzitě","x":1360,"y":890,"width":250,"height":60,"color":"6"},
+		{"id":"25237daba521ec44","type":"text","text":"- [x] Zeptej se na unoverzitě ✅ 2026-05-19","x":1360,"y":890,"width":250,"height":60,"color":"4"},
 		{"id":"65746eddc2da406d","type":"text","text":"Jaké předměty mám mít?","x":940,"y":990,"width":250,"height":60,"color":"1"},
 		{"id":"8817590a52660883","type":"text","text":"# Elektromagnetické jevy v informatice (AP3EJ)\n\n**Garant:** doc. RNDr. Vojtěch Křesálek, CSc.\n**Obsah:**\n- Elektromagnetické vlnění a světlo.  \n- Vlnové vlastnosti světla.  \n- Optické materiály.  \n- Spektra atomů, molekul a pevných látek.  \n- Luminiscence.  \n- Lasery.  \n- Elektronické vlastnosti materiálů.  \n- Magnetické vlastnosti materiálů.  \n- Detekce záření.  \n- Fotometrie a barevné vidění.  \n- Vláknová optika a optické komunikační systémy.  \n- Plazma - základní vlastnosti a využití.  \n- Elektromagnetická kompatibilita informatických systémů.  \n- Odolnost informatických systémů proti rušení.","x":1360,"y":990,"width":440,"height":70},
 		{"id":"537345d576f28bf9","type":"text","text":"Musím se podívat na emaily z erasmu","x":-160,"y":890,"width":250,"height":60,"color":"1"},
@@ -37,7 +36,8 @@
 		{"id":"22ccd28d55e82714","type":"text","text":"Praktikum programování (AP6PP)","x":2880,"y":1490,"width":250,"height":60},
 		{"id":"c3ed9d66c279f791","type":"text","text":"Není 100% match, ale stojí za zkoušku","x":3280,"y":1490,"width":250,"height":60,"color":"3"},
 		{"id":"0c0d3342a059d037","type":"text","text":"Počítačové sítě (AP4PS)","x":2880,"y":1970,"width":250,"height":60},
-		{"id":"72ea7b3c1d1bf893","type":"text","text":"Umělá a výpočetní inteligence (AP6UI)","x":2880,"y":1410,"width":250,"height":60}
+		{"id":"72ea7b3c1d1bf893","type":"text","text":"Umělá a výpočetní inteligence (AP6UI)","x":2880,"y":1410,"width":250,"height":60},
+		{"id":"b8d1a3a346b3f1dd","type":"text","text":"Co je pro erasmus vše potřeba udělat?","x":220,"y":870,"width":250,"height":60,"color":"1"}
 	],
 	"edges":[
 		{"id":"ccc4b18e5f189201","fromNode":"537345d576f28bf9","fromSide":"right","toNode":"b8d1a3a346b3f1dd","toSide":"left"},

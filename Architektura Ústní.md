@@ -322,7 +322,7 @@ Provádí operace na vektorech dat. Používá se pro velká množství dat, zpr
 ### Front-end
 
 **Makroinstrukce:** ze sady x86_64 CISC
-**Mikroinstrukce (RISC):** Dekódery se tvoří z makroinstrukcí
+**Mikroinstrukce (RISC):** jsou tvořeny dekódery z makroinstrukcí
 
 Dekóder dodává dostatečné množství mikrooperací (μOPs), aby minimalizoval bubliny. O plnění fronty se stará cache pro mikrooperace nebo dekódery a načítací jednotky.
 
@@ -883,13 +883,141 @@ Předpovídání poruch pevných disků sledováním parametrů, jestli jsou vpo
 
 ![bios vs uefi](./Screenshot%202026-05-18%20at%2020.55.04.png)
 
-EUFI booj je rychlejší.
+EUFI boot je rychlejší.
 
 ## Co chce slyšet na zkoušce
 
 - [ ] Ideálně nakreslit schéma staré a nové a popsat co se změnilo. Popř. stačí jen nové, ale asi se pak dopta...
 - [ ] BIOS/UEFI
 - [ ] Co je na desce (patice, south bridge, pce-e, RAM sloty, atd..)
+
+# Sběrnice (Bus)
+
+- Skupina signálových vodičů
+- Mají za úkol zajistit přenos dat, stavů, adresy a řídících povelů mezi dvěma a více zařízeními.
+- Přenos dat na sběrnici se řídí stanoveným protokolem.
+- Sběrnice jsou na konci vybaveny konektory uzpůsobených pro připojení modulů.
+
+## Typy sběrnic
+
+- Rychlost sběrnice ovliňuje velikost frekvence. Když bude mít sériová sběrnice větší frekvenci, tak může být rychlejší než paralerní. Ale když mají stejnou, tak paralerní bude rychlejší (má pro každý bit jeden vodič).
+
+### Paralerní sběrnice 
+
+- Pro každý bit máme jeden vodič
+- Řídící, adresové, datové vodiče
+
+![paralerní sběrnice](./Screenshot%202026-05-18%20at%2021.04.47.png)
+
+- **Problémy paralelní sběrnice:**
+  - **Časování:** očekáváme, že bity příjdou ve stejný okamžik, ale je tam časové okno, které následně omezuje frekvenci.
+  - Elektromagnetická interference.
+  - **Přeslechy:** vodiče se navzájem mohou ovlivňovat, když přenáší informace.
+  - **Energetická náročnost:** více vodičů.
+
+### Sériová sběrnice
+
+- Sdílení dat a řízení na společném vodiči (nebo vodičích)
+
+![sériová sběrnice](./Screenshot%202026-05-18%20at%2021.04.56.png)
+
+## Přenos datové informace po fyzikální stránce
+
+- Pomocí změny el. napětí:
+  - Napěti vůči společnému bodu (signálová zem)
+  - Diferenční (rozdíl napětí na dvou vodičích)
+    - Mohou být full-duplex (obousměrný současně) nebo half-duplex (obousměrný ale postupně)
+- Pomocí změny el. proudu - směr toku proudu (dva stavy); větší odolnost proti elektromagnetickému rušení.
+
+## PCI
+
+- K systémové sběrnici připojena přes mezisběrnicový můstek.
+  - Možnost použití sběrnice PCI i v jiných počátačích než jsou PC.
+  - Můstek dovoluje provádět přizpůsobování napšťových úrovní.
+- Výpočet propustunisti: $4B \times 33MHz = 133 \frac{MB}{s}$
+  - $32b$ = přenos o šířce.
+  - $33MHz$ = frekvence sběrnice.
+  - Bacha u zkoušky na jednotky!!!
+- Podpora Plug and Play (PnP).
+- Podporuje PCI Busmastering.
+  - **Bus master:** řídící zařízení sběrnice.
+  - **Target:** cílové zařízení sběrnice.
+
+![PCI img](./Screenshot%202026-05-19%20at%2014.18.08.png)
+
+## PCI Express
+
+- Sériové připojení typu point-to-point (zařízení komunikují napřímo) s použitím přepínačů.
+- Přenáší data po paketech.
+  - Hodinový signál je kódovaný do datového toku.
+- Diferenciální přenos (2 vodiče - pro každý směr jeden).
+- Zachováno mnoho SW funkcí PCI sběrnice.
+- Karta PCI-e x1 může pasovat i do PCI-e x16
+
+### Link
+
+-  link je point-to-point komunikační kanál mezi dvěma porty PCIe (umožňuje full duplex => přijímat a odesílat zároveň).
+-  Na fyzické úrovni se link skládá z jedné nebo více linií (lanes).
+-  Linie se skládá ze dvou dvojic diferenčních signálů.
+   -  Jeden pár pro příjem dat a druhý pro vysílání.
+   -  V jednom linku 1 - 32 linií.
+
+![PCI-e link](./Screenshot%202026-05-19%20at%2014.26.15.png)
+![PIC-E links and lanes](./Screenshot%202026-05-19%20at%2014.28.34.png)
+
+## Moderní schéma
+
+![moderní schéma](./Screenshot%202026-05-19%20at%2014.45.24.png)
+
+## AGP
+
+- Kdysi pro grafické karty. Důraz na zvýšení výkonu v oblasti grafiky.
+- Umožnení přímého přístupu grafické karty do systémové paměti.
+
+## Plug and Play (PnP) - automatická konfigurace zařízení
+
+- Kdysi se zařízení/komponenta musela prvně nastavit, než se mohla začít používat. Toto Plug and Play řeší.
+- BIOS při zapnutí vyzve všechna zařízení připojená ke sběrnici k identifikaci.
+  - Zařízení odešlou své identifikátory a požadavky.
+  - Přidělí se systémové prostředky tak, aby nedošlo ke konfliktům.
+    - Přerušení
+    - I/O porty
+    - Adresový prostor v paměti RAM (pro paměť na kartě)
+  - Údaje o konfiguraci jsou uložena do paměti.
+  - Zařízení je inicializováno
+  - Po spuštění vyhledá OS podle identifikátoru ovladače.
+  - Ovladače použijí uloženou konfiguraci.
+
+## Přerušení (Hardwarová)
+
+- Jsou využívány zařízeními, aby oznámily, že má být vyplněn určitý požadavek.
+- Pokud je rozpoznáno přerušení, speciální proces převezme řízení systému, uloží obsah všech registrů a přesměruje systém do tabulky vektorů přerušení.
+- V tabulce je obsažen seznam ukazatelů na adresy paměti, které odpovídají jednotlivým přesušením (obsluha přerušení).
+
+## APIC (Advanced Programmable Interrupt Controller)
+
+- Od roku 1994 toto obsahuje každý procesor.
+- Každé jádro ho má. HT nebo SMT (virtuální jádro) má taky!
+
+## Adresy vstupu a výstupu (I/O porty)
+
+- Vzájemná komunikace mezi HW a SW
+- U PC celkem 65535 rozdílných portů
+  - 0000h - FFFFh
+- Dě zařízení nesmí mít stejnou adresu
+  - Pozoro!!! Neplést s adresy v paměti, zde se jedná o port.
+
+## Adresový prostor v paměti
+
+- V RAM se vyhradí adresa, která bude odkazovat na paměť karty připojenou přes sběrnici.
+
+## Co chce slyšet u zkoušky?
+
+- [ ] Dělení sběrnic
+- [ ] Jednu sběrnici popsat (nejlépe PCI-e)
+- [ ] Popsat fungování sběrnice
+- [ ] Typy přenosu
+- [ ] Hlavně chápat PCI-e prý ho to zajímá nejvíc
 
 # USB
 
