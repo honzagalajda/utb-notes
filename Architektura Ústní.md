@@ -776,12 +776,55 @@ Předpovídání poruch pevných disků sledováním parametrů, jestli jsou vpo
 - **Teplotní gradient:** 25 °C/hod.
 - **Záruka:** 2-5 let
 
+### Rozhraní pevných disků
+
+- Zařízení, které zprostředokává komunikaci mezi pevným diske a ostatními součástmi PC
+- **IDE:**
+  - Hlavní řídící jednotka disku umístěná přímo na pevný disk.
+- **ATA:** Používala se kdysi.
+- **SATA** Používaný dnes.
+- **M.2:**
+  - Využití až 4x linií PCI-E 3.0
+- **NVMe (Non-Volatile Memory express):**
+  - Specifikace rozhraní pro komunikaci mezi flash pamětí a jejím řadičem.
+  - Optimalizovano pro nízké latence a vysokou propustnost dat.
+  - Podpora více jader CPU (multi-tasking).
+
+### RAID (Redundant Array of Inexpensive/Independent Disks)
+
+- Metoda zabezpečení dat proti selhání pevného disku.
+- Ukládání dat na víc nezávislých disků.
+- RAID nenahrazuje zálohování dat!
+- Často používáno na serverech
+- **RAID 0:**
+  - Neobsahuje žádné redundatní informace (neposkytuje ochranu).
+  - Prokládané ukládaní zvyšuje výkon a kapacitu.
+  - ![RAID 0](./Screenshot%202026-05-19%20at%2015.57.50.png)
+- **RAID 1:**
+  - Zdrcadlení obsahu disků. Obsah se současně zaznamenává na dva diky.
+  - Při výpadku jednoho disku se pracuje s kopií.
+  - Čtení může být rychlejší, protože je možné číst ze 2 disků současně.
+  - ![RAID 1](./Screenshot%202026-05-19%20at%2015.59.22.png)
+  - Dále možno rošířit pomocí 4 disků na RAID 0+1 nebo RAID 1+0
+- **RAID 5:**
+  - Vyžaduje alespoň 3 disky.
+  - Samoopravné kódy jsou uloženy na členech střídavě.
+  - Výsledná kapacita je n-1
+  - Pomalější zápis (nutnost výpočtu opravného kódu).
+  - Odolný vůči výpadku jednoho disku.
+  - ![RAID 5](./Screenshot%202026-05-19%20at%2016.02.10.png)
+- **RAID 6:**
+  - Obdoba RAID 5. Používá dva pariní disky. Odoslnost vůči výpadku dvou disků.
+  - Minimalně 4 disky
+  - ![RAID 6](./Screenshot%202026-05-19%20at%2016.03.29.png)
+
 ## Co chce slyšet u zkoušky
 
 - [ ] Když chceš říct paměť DDR4 tak řekni celý název DDR4 SDRAM!
 - [ ] Hierarchie
 - [ ] Polovodičové paměti (jak fungují, rozdělení/úrovně, kde se nachází a popsat schéma jedné podrobně)
 - [ ] Sekundární paměti (komplet jak funguje hdd/ssd, jednotlivé části, úrovně)
+- [ ] Znalost rozhraní SATA a M.2
 
 # Základní deska
 
@@ -1022,3 +1065,7 @@ EUFI boot je rychlejší.
 # USB
 
 ![USB DC](./Screenshot%202026-05-16%20at%208.22.41.png)
+
+# Optická média
+
+- Video 12 - začátek
