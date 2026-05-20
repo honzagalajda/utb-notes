@@ -1064,6 +1064,89 @@ EUFI boot je rychlejší.
 
 # USB
 
+- Univerzální sériová sběrnice
+- Připojení až 127 zařízení
+- **Architektura:**
+  - Vícevrstvá
+  - Hvězdicová
+  - Centrálně ovládaná
+  - ![USB arch](./Screenshot%202026-05-19%20at%2016.13.37.png)
+- Základem topolofie je rozbočovač (Root Hub)
+  - Řídí veškerý provoz na sběrnici.
+  - Umístěn zpravidla na základní desce nebo na přídavné kartě.
+
+## Typy
+
+- **USB 1.1:** 12 Mb/s
+- **USB 2.0:** 480 Mb/s; max 500 mA (2,5 W)
+- **USB 3.0:** 5 Gb/s; max 900 mA (4,5 W)
+- **USB 3.1 gen 1:** 5 Gb/s; max 3A (15 W)
+- **USB 3.1 gen 2:** 10 Gb/s
+- **USB 3.2 gen 1x1:** 5 Gb/s
+- **USB 3.2 gen 2x1:** 10 Gb/s
+- **USB 3.2 gen 2x1:** 10 Gb/s
+- **USB 3.2 gen 1x2:** 10 Gb/s
+- **USB 3.2 gen 2x2:** 20 Gb/s
+- **USB 4.0:** 40 Gb/s založeno na Thunderbolt 3 protokolu
+
+## Vstvový model
+
+- **Hostitelské zařízení:** Naše sestava (PC).
+  - **SW USB systému:** Ovladače přímo pro USB.
+  - **Hostilský řadič:** USB female konektor.
+- **Periferní zařízení:** Myš, klávesnice, apod.
+  - **Funkce:** To co nám zařízení umožňuje dělat.
+  - **Logické zařízení:** Samotná implementace HW zařízení, které používáme.
+  - **USB rozhraní:** USB male konektor.
+
+![USB vrstvy](./Screenshot%202026-05-20%20at%208.03.53.png)
+
+## USB (1.1, 2.0)
+
+- USB kabel má celkem 4 vodiče
+  - 2 datové (kroucená dvojlinka)
+  - 2 napájcí GND, +5 V
+
+![USB 1.1/2.0](./Screenshot%202026-05-20%20at%208.07.14.png)
+
+## Konektory
+
+![Konektory](./Screenshot%202026-05-20%20at%208.08.29.png)
+
+## Komunikace
+
+- Probíhá metodou NRZI (Non Return Zero Invert)
+  - Nuly vedou ke změně úrovně, jedničky úroveň nemění.
+- Jednotlivé bity 0,1 jsou reprezentovány opačnými a střídajicími se úrovněnmi napětí.
+
+![NRZI náčrt](./Screenshot%202026-05-20%20at%208.23.35.png)
+
+## Připojení
+
+- Podpora Plug and Play.
+- Rozbočovače mají na portech identifikátory (status bity).
+  - RootHub vysílá periodicé dotazy na stav (Reagují na změnu)
+- Kořenový rozbočovač přidělí jedinečné ID.
+- Proces připojení a odpojení zařízení se jednotně nazývá inventarizace.
+
+## Typy datových přenosů
+
+- **Control transfers:** Řídící přenosy.
+- **Bulk Transfers:** Objemové přenosy.
+- **Interupt Transfers:** Limited latency transfers.
+- **Isochronous Transfers:** Datový tok (Hlas, video).
+
+## Thunderbolt
+
+- Vysocho rychlostní technologie/protokol, které přes USB port umí přenášet data.
+
+## Co chce slyšet u Zkoušky
+
+- [ ] Popsat architekturu USB
+- [ ] Typy komunikace/přenosu na USB
+- [ ] Konektory USB
+- [ ] Vrstvy USB
+
 ![USB DC](./Screenshot%202026-05-16%20at%208.22.41.png)
 
 # Optická média
