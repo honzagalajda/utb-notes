@@ -1232,4 +1232,44 @@ EUFI boot je rychlejší.
 
 # Optická média
 
-- Video 12 - začátek
+## CD
+
+- **Pit:**  místo, na kterém dochází k rozptylu vysílaného laserového paprsku.
+- **Land:** místo, kde dochází k odrazu.
+- Uložení podle velikosti landů a pitů.
+
+![pits & lands](./Screenshot%202026-05-20%20at%209.41.15.png)
+
+## Výroba optických médií
+
+- Pokrytí skleněného disku fotorezistentním materiálem.
+- Laserový záznam.
+- Výroba vzorového záznamu
+- Galvanické pokovení
+- Oddělení matrice od vzorového skleněného disku
+- Výroba médií - lisování
+- Pokovení
+- Zalití disku ochranným lakem a dokončení
+
+![výroba #1](./Screenshot%202026-05-20%20at%209.44.55.png)
+![výroba #2](./Screenshot%202026-05-20%20at%209.45.25.png)
+![výroba #3](./Screenshot%202026-05-20%20at%209.47.09.png)
+![výroba #4](./Screenshot%202026-05-20%20at%209.47.50.png)
+
+## CD-R
+
+- Informaci lze zaznamenávat pouze jednou.
+- CD je vytvořeno během procesu vypalování.
+
+## CD-RW
+
+- Umožňuje vymazat dříve nahrané informace.
+
+## DVD-ROM
+
+- Obstranný záznam.
+
+## Blue-ray
+
+- Modrofialový laser.
+- Umožňuje hustější záznam (více informací).
