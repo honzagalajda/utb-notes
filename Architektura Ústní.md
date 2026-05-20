@@ -484,11 +484,11 @@ Dnes to tedy prochází přes stejné výkonné jednotky jen se liší typ výpo
 2. **Cache:** L1I, L1D, L2, L3. Velikost v KB.
 3. **Oprační paměť:** DRAM. Velikost v GB.
 4. **Sekundární paměť:** HHD/Flash (SSD). Velikost v TB.
-5. **Teciální paměť:** Disky, DVD, RAID, NAS. Často médium může být výměnné. Velikost až v PB; Nejpomalejší, uloží nejvíce informací, nejmenší cena/MB.
+5. **Terciální paměť:** Disky, DVD, RAID, NAS. Často médium může být výměnné. Velikost až v PB; Nejpomalejší, uloží nejvíce informací, nejmenší cena/MB.
 
 ## Základní parametry paměti
 
-- **Kapacita:** v bitech u _registerů_ u zbytku v Bajtech.
+- **Kapacita:** V bitech u _registerů_ u zbytku v Bajtech.
 - **Přístupová doba:** Jak dlouho nám trvá než dokážeme do paměti přistoupit. Od nanosekund až stovky milisekund.
 - **Přenosová rychlost:** Rychlost přenosu informace z paměti. V B/s. Záleží na typu paměti a sběrnici.
 - **Statičnost/dynamičnost:** Statické dokáži informaci uchovat v čase. Dynamické potřebují informaci neustále obnovovat.
@@ -598,7 +598,7 @@ Určuje způsob mapování bloků z RAM do bloků v cache.
 - Data jsou ukládána v poli unipolárních tranzistorů s plovoucími hradly.
 - Ovládací hradlo (CG - control gate)
 - Plovoucí hradlo (FG - floating gate) 
-  - je izolované od okolí vrstvou oxidu. 
+  - Je izolované od okolí vrstvou oxidu. 
   - Všechny přivedené elektrony jsou zde "uvězněny" a tím je uložená informace.
 - Elektrony na FG, modifikují (částečně ruší) elektrické pole přicházející z CG, což modifikuje prahové napětí ($U_t$) buňky.
 - **Čtení:** el. napětí na CG -> průchod proudu překládáme jako Log1
@@ -694,7 +694,7 @@ V dnešní době spíše v rámci serverů.
 - **Logické chyby:** většinou dočasné chyby, které se mouhou náhodně objevovat.
   - Poruchy napájení (slabý zdroj).
   - Nesprávný typ modulu nebo nevhodná rychlost modulu (přetaktování frekvence).
-  - Rušení raiovými signály - mohou vznikat falešné el. singály.
+  - Rušení radiovými signály - mohou vznikat falešné el. singály.
   - Statické výboje.
   - Výpadek časování - příčinou pomalé paměťové module nebo přetaktované procesory.
 
@@ -712,24 +712,24 @@ V dnešní době spíše v rámci serverů.
 ### Základní součásti pevného disku
 
 - **Plotny disku:** Vyrábí se ze slitiny hliníku a hořčíku. Plotna je pokryta tenkou vrstvou magnetické látky. Vzdálenost hlavy od plotny ~ 3 nm.
-- **Hlavy pro čtení a zápis:** Nikdy se plotny nedotýka, pluje nad ním. Obvkle jedna hlava pro čtení a jedno pro záznam. V klidu jsou hlavy zaparkovány - automatické parkování.
+- **Hlavy pro čtení a zápis:** Nikdy se plotny nedotýka, pluje nad ním. Obvykle jedna hlava pro čtení a jedno pro záznam. V klidu jsou hlavy zaparkovány - automatické parkování.
 - **Pohon hlav:** Pohybuje závěsem s hlavami napříč diskem. Elektromagnetický pohon. Přesné nastavení nad požadovanou stopou se používá zpětná vazba.
 - **Pohon ploten disku:** Motorem přímo připojeným k hřídeli. Konstatní otáčky a bezvibrační chod (díky fluidním ložiskám).
 - **Vzduchové filtry:** 
   - **Recirkulační:** Zachytávání malých částic uvnitř disku.
   - **Barometrický:** K vyrovnávání tlaku mezi vnějším a vnitřním prostředí.
-- **Řídící deska:** Plohování a pohon hlav, pohon disku, předávání dat do řadiče a umístění Cache paměti - buffer.
+- **Řídící deska:** Polohování a pohon hlav, pohon disku, předávání dat do řadiče a umístění Cache paměti - buffer.
 - **Kabely a konektory:** Napajecí konekor (3.3V, 5V a 12V) a datový konektor (záleží na typu disku).
 
 ![HDD schema](./Screenshot%202026-05-17%20at%2014.58.29.png)
 
-### Geometri pevných disků
+### Geometrie pevných disků
 
 - **Stopa (track):** Soustředné kružnice na disku. Číslované od kraje disku od nuly.
 - **Sektor (sector):** malá část stopy, nejmenší jednotka pro ukládání dat.
 - **Válec (cylinder):** Množina všech stop se stejným číslem na všech površích.
 
-![geometri disku](./Screenshot%202026-05-17%20at%2015.07.45.png)
+![geometrie disku](./Screenshot%202026-05-17%20at%2015.07.45.png)
 
 ### Modulace dat při záznamu
 
@@ -833,7 +833,7 @@ Předpovídání poruch pevných disků sledováním parametrů, jestli jsou vpo
 
 - Deska s vícevrstvými plošnými spoji osazená konektory pro procesor a další komponenty.
 - Obsahuje sestavy integrovaných obvodů (Chipset - Intel/AMD).
-- Na desce jsou komponenty promojovýny pomocí sběrnic pomocí sběrnic.
+- Na desce jsou komponenty propojeny pomocí sběrnic.
 
 ## Základní součásti
 
@@ -917,7 +917,7 @@ Předpovídání poruch pevných disků sledováním parametrů, jestli jsou vpo
 4. Vyhledání jednotky pro zavedení OS nebo pro načtení inicializačního programu.
 5. Sestavení tabulky systémových prostředků - přidělení nekonfliktní zdroje podle identifikovaných zařízení.
 6. Výběr a aktivace primárního vstupu a výstupu - klávesnice a monitor, atd.
-7. Vyhledání iných zařízení než Plug-and-Play - dta z jejich pamětí ROM.
+7. Vyhledání jiných zařízení než Plug-and-Play - data z jejich pamětí ROM.
 8. Vyřešení konfliktů zařízení.
 9. Konfigurace zvolého bootovacího zařízení.
 10. Aktivace zařízení Plug-and-Play - zavolá rutiny v jejich pamětech ROM.
@@ -933,9 +933,9 @@ EUFI boot je rychlejší.
 
 ## Co chce slyšet na zkoušce
 
-- [ ] Ideálně nakreslit schéma staré a nové a popsat co se změnilo. Popř. stačí jen nové, ale asi se pak dopta...
+- [ ] Ideálně nakreslit schéma staré (se serverním můstkem) a nové a popsat co se změnilo. Popř. stačí jen nové, ale asi se pak dopta...
 - [ ] BIOS/UEFI
-- [ ] Co je na desce (patice, south bridge, pce-e, RAM sloty, atd..)
+- [ ] Co je na desce (patice, south bridge, pci-e, RAM sloty, atd..)
 
 # Sběrnice (Bus)
 
