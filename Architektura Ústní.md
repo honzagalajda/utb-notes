@@ -141,7 +141,7 @@ Při výrobě čipů se klade velký důraz na čistotu prostředí.
 
 - **Frekvence (rychlost) [Hz]:** Vyšší frekvence nemusí nutně znamenat lepší procesor. Například 4 GHz neznamená 4 miliardy sčítacích operací, protože jednotlivé operace se skládají z více kroků.
 - **Počet jader (cores):** Na die může být integrovaných více jader, což umožňuje zpracování více úloh současně.
-- **Šířka slova (8, 16, 32, 64) [bity]:** Dnes je standard 64 bitů. To znamená, že v jednom taktu můžeme pracovat s 64 bity; registry obvykle odpovídají této šířce.
+- **Šířka slova (8, 16, 32, 64) [bity]:** Dnes je standard 64 bitů. To znamená, že v jednom taktu/instrukci můžeme pracovat s 64 bity; registry obvykle odpovídají této šířce.
 - **Vyrovnávací paměť (cache) [Bajty]:** Cache je rychlejší než hlavní paměť, zajišťuje plynulý přísun instrukcí a dat a bývá umístěna přímo na čipu (on-die).
 - **Počet instrukčních kanálů (pipeline):** Popisuje, jak instrukce procházejí procesorem a jak jsou zpracovávány.
 - **Počet a typ výkonných jednotek:** Podrobněji níže.
@@ -215,10 +215,10 @@ Instrukční kanál RISC procesorů:
 - **Instruction fetch:** vyzvednutí instrukce.
 - **Decode:** dekódování instrukce.
 - **Execute:** provedení instrukce.
-- **Memory Access:** přístup k paměti (čtení/zápis).
+- **Memory Access:** přístup k paměti (čtení/zápis) - při instrukcí load/store.
 - **Commit:** zápis výsledku.
 
-Hloubka pipeline (počet stupňů) u novějších procesorů narůstá, ale celková výkonost závisí i na taktovací frekvenci; více stupňů může znamenat vyšší frekvenci a kratší dobu mezi takty.
+Hloubka pipeline (počet stupňů) u novějších procesorů narůstá, to ale nemusí znamenat nižší výkon. Když se s hloubkou pipeline navýší i taktovací frekce může být procesor stejně rychlý nebo i rychlejší.
 
 ### Subskalární (sekvenční) zpracování
 
@@ -238,7 +238,7 @@ Tímto způsobem se zvýší efektivita zpracování instrukcí.
 
 ### Superskalární zpracování
 
-Superskalární procesory dokážou najednou dekomponovat a vykonávat více instrukcí paralelně v jednom cyklu.
+Superskalární procesory dokážou najednou vykonávat více instrukcí paralelně v jednom cyklu.
 
 ![superskalární příklady](./Screenshot%202026-05-16%20at%2015.07.25.png)
 
@@ -248,9 +248,9 @@ Intel Pentium byl jedním z prvních komerčně úspěšných superskalárních 
 
 ### Problémy
 
-- **Datový hazard:** Nastává, když instrukce závisí na výsledku předchozí instrukce, který ještě není dostupný.
+- **Datový hazard:** Nastává, když instrukce závisí na výsledku předchozí instrukce, který ještě není dostupný. Vzníká tak _pipeline stall_.
 - **Řídící hazard (branch):** Pokud procesor přednačte instrukce z větve, která se nakonec neprovede, musí je zahodit (_pipeline flush_). Moderní procesory tento problém částečně řeší predikcí větvení.
-- **Strukturální hazard:** Konflikty při sdílení hardwarových zdrojů mezi různými fázemi pipeline, což může způsobit _pipeline stall_.
+- **Strukturální hazard:** Konflikty při sdílení hardwarových zdrojů (např. ALU jednotek) mezi různými fázemi pipeline, což může způsobit _pipeline stall_.
 
 **Pipeline flush:** je vyprázdnění instrukčního kanálu.
 **Pipeline stall (bublina):** zpoždění zpracování následující instrukce.
@@ -304,6 +304,7 @@ Provádí operace na vektorech dat. Používá se pro velká množství dat, zpr
 - **System on Chip (SoC):** Integrovaný obvod, který zahrnuje více částí systému do jediného čipu (integrovaná grafická karta, cache, memory controller atd.).
 - **Více jader:** Vše, co jsme probrali (schémata a zpracování instrukcí, skalárnost) bylo dosud řešeno na jednom jádře.
 - **L3 cache:** Sdílená pro všechna jádra.
+- **System Agent:** náhrada za severní můstek.
 
 ![schéma procesoru jako celku](./Screenshot%202026-05-16%20at%2016.28.51.png)
 
@@ -357,6 +358,8 @@ Probíhá v několika úrovních:
 - Navýšení výkonu je proměnlivé (převážně pomáhá při mnoha malých/rychlých operacích).
 - Počet výkonných jednotek je stejný, ale je potřeba zdvojnásobit některé registrů pro oddělení kontextů.
 
+![hyper threading](./Screenshot%202026-05-16%20at%2018.28.27.png)
+
 ## Tepelná ochrana
 
 Nové čipy mají ochranu, aby se procesor nepřehřál, často v podobě vkládání instrukcí `nop`. Když je chladič špatně nainstalovaný, procesor nemusí využívat plný výkon.
@@ -376,7 +379,7 @@ Nové čipy mají ochranu, aby se procesor nepřehřál, často v podobě vklád
 
 ## Grafické režim prace
 
-- **Textový:** Umožňuje zobrazovat pouze předem definované znaky (písmena, číslice, speciální znaky) a pseudograficke znaky (pro vykresolnování tabulek) - ASCII tabulka. Mohli jsme se s ním setkat v BIOSu nebo velki starých OS.
+- **Textový:** Umožňuje zobrazovat pouze předem definované znaky (písmena, číslice, speciální znaky) a pseudograficke znaky (pro vykresolnování tabulek) - ASCII tabulka. Mohli jsme se s ním setkat v BIOSu nebo u velmi starých OS.
 - **Grafický:** Režim, ve kterém jsou informace zobrazovány pomocí jednotlivých pixelů (V tomto režimu je i CMD/Terminal).
 
 ## Grafická karta
