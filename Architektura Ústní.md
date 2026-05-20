@@ -1074,7 +1074,7 @@ EUFI boot je rychlejší.
   - Hvězdicová
   - Centrálně ovládaná
   - ![USB arch](./Screenshot%202026-05-19%20at%2016.13.37.png)
-- Základem topolofie je rozbočovač (Root Hub)
+- Základem topologie je rozbočovač (Root Hub)
   - Řídí veškerý provoz na sběrnici.
   - Umístěn zpravidla na základní desce nebo na přídavné kartě.
 
@@ -1092,11 +1092,12 @@ EUFI boot je rychlejší.
 - **USB 3.2 gen 2x2:** 20 Gb/s
 - **USB 4.0:** 40 Gb/s založeno na Thunderbolt 3 protokolu
 
-## Vstvový model
+## Vrstvový model
 
 - **Hostitelské zařízení:** Naše sestava (PC).
+  - **Klientský SW:** Program v PC, který přes USB mluví s konkrétním zařízením.
   - **SW USB systému:** Ovladače přímo pro USB.
-  - **Hostilský řadič:** USB female konektor.
+  - **Hostitelský řadič:** USB female konektor.
 - **Periferní zařízení:** Myš, klávesnice, apod.
   - **Funkce:** To co nám zařízení umožňuje dělat.
   - **Logické zařízení:** Samotná implementace HW zařízení, které používáme.
