@@ -1149,6 +1149,87 @@ EUFI boot je rychlejší.
 
 ![USB DC](./Screenshot%202026-05-16%20at%208.22.41.png)
 
+# Tiskárny
+
+## Znakové a řádkové tiskárny
+
+- Tyto tiskárny se už v dnešní době moc nepoužívají.
+
+### Daisy-wheel
+
+- Tisková hlava má tvar kotouče, který má na svém obvodu znaky.
+
+![daisy wheel](./Screenshot%202026-05-20%20at%208.46.49.png)
+
+### Line printer
+
+- Rychle rotující řetět se znaky. Řetěz rotuje horizontálně přes celou šířku stránky a naproti němu jsou přes celou šíři kladívka, která přes pásku otiskují znaky na papír.
+
+## Jehličkové tiskárny
+
+- Hlava tvořena různým počtem jehel
+- Hlava se pohybuje podél tištěné řádky
+- Elektromagnety vystřelují jednotlivé jehličky přes barvící pásku (mohl být i více barevný) proti papíru.
+
+## Tepelné tiskárny
+
+- Nepoužívají žádnou barvicí pásku a místo jehel jsou na tiskové hlavě umístěny elektrické odpory, kteřé svým zahřátím způsobí zčernání tepelně citlivé vrstvy na speciálním papíře.
+- Účtenky atd...
+
+## Inkoustové tiskárny
+
+### Piezoelektrické
+
+- Na tiskové hlavě vyráběné ze strukturovaných skleněných destiček jsou upevněny piezoelektrické krystaly. Po přivedení napětí, tyto krystaly změní nepatrně svůj tvar. To způsobí jejich prohnutí, které způsobí tlakovou vlnu v kanálku a ta vystřelí inkoust.
+
+![piezoelektricé](./Screenshot%202026-05-20%20at%208.54.51.png)
+
+### Termální
+
+- Pricipem tisku je, že se nad prudce ohřátým tělískem na teplotu asi 200 °C vytvoří bublinka páry. Ta žene z trysky kapičku inkoustu pod vysokým tlakem ven. Po vystříknutí jedné kapičky se v trysce vytvoří podtlka, který do ní nasaje další inkoust ze zásobníku.
+
+![termální](./Screenshot%202026-05-20%20at%208.54.43.png)
+
+## Voskové tiskárny
+
+- Tyto tiskárny využívají namísto tekutého inkoustu bloky vosku, vložené do zásobníku a před tiskem natavované.
+- Popřipadě používají filmu s voskem, které se teplem přenáší.
+
+## Sublimační tiskárny
+
+- Sublimační tiskárny fungují na principu napařování inkoustu na speciální papír. Inkousto se zahřeje a v plynném skupenství je pod tlakem směrován na speciální vrstvu papíru, která jej absorbuje.
+
+## Laserové tiskárny
+
+- Světlocitlivý válec je nabit pozitivním nábojem, v místech osvitu laserem se náboj změní a přitahuje pozitivně nabitý toner. Toner je potom přitažen na papír, potom je teplem a tlakem zažehlen.
+
+![laserové tiskárny](./Screenshot%202026-05-20%20at%208.58.47.png)
+
+## LED tiskárny
+
+- Místo laseru je fotocitlivý válce osvětlován řadou několika tisíc mikrodiod LED. Každá dioda tvoří jeden samostatný obrazový bod. Z hlediska kvality tisku jsou LED tiskárny srovnatelné s laserovými.
+
+![led tiskárny](./Screenshot%202026-05-20%20at%208.58.51.png)
+
+## Plotter
+
+- Vykreslování vektorové grafiky.
+
+### Deskové ploterry (stolní)
+
+- Pero je umístěno na posuvném ramenu a vykonává dvourozměrný pohyb.
+- Papír je pevně uchycen na základní desce.
+
+### Stojanové plottery
+
+- U těchto zařízení se pero pohybuje podel proletteru a papír se pohybuj v směru kolmém. Při pohybu je papír přitlačován gumovými válečky k drsnému válci, který se otáčí.
+
+## Míchání barev
+
+![míchání barev](./Screenshot%202026-05-20%20at%209.08.58.png)
+
+- Tiskárný používají CMYK a monitory a displaye RGB.
+
 # Optická média
 
 - Video 12 - začátek
