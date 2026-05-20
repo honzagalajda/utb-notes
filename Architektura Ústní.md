@@ -392,12 +392,12 @@ Dělíme na dedikovanou (samostatný HW) a integrovaná (grafická karta přímo
 
 ### Části:
 
-- **GPU:** CPU posílá sadu instrukcí, kterou jsou zpracovány ovladačem grafické karty a vykonány procesorem karty. Oproti CPU má mnohem více jader, mnoho pipelines. Optimalizované pro vektorové/maticové výpočty. GPU zapisuje jednotlivé frames (obrazy) do frame bufferu.
+- **GPU:** CPU posílá sadu instrukcí, které jsou zpracovány ovladačem grafické karty a vykonány procesorem karty. Oproti CPU má GPU mnohem více jader, mnoho pipelines. Optimalizované pro vektorové/maticové výpočty. GPU zapisuje jednotlivé frames (obrazy) do frame bufferu.
 - **VRAM:** Potřebnou velikost ($width [px] \times height [px] \times  colorDepth[b/px] = frameBuffer[b]$) určuje maximální možné rozlišení a počet (hloubka) barev (v dnešní době se využívá hlouba True Color $2^{24}$b) - 2D. Integrovaná GK využívá RAM. Ve 3D větší nároky na pěměť (Z-buffer, textury).
 - **DAC (RAMDAC) převodník:** Bylo potřeba kdydysi pro VGA, protože bylo třeba převést dig. signál na analogový. Čím větší frekvence převodníku [MHZ] tím lépe. Každé staré výstupní rozhraní potřebuje svůj převodník.
-- **BIOS:** Paměť typu ROM. Obsahuje firmware všerně definicí grafických módů a obrazových fontů. Inicializace probíhá v průběhu inicializace počítače (jak UEFI nastartuje v celém PC, tak spouští tento ROM BIOS).
+- **BIOS:** Paměť typu ROM. Obsahuje firmware včetně definicí grafických módů a obrazových fontů. Inicializace GK probíhá v průběhu inicializace počítače (jak UEFI nastartuje v celém PC, tak spouští tento ROM BIOS).
 - **Výstupní konektory:** HDMI, DP, DVI.
-- **Sběrnice:** připojená k MB (teď nejčasteji PCI-e).
+- **Sběrnice:** připojení k MB (teď nejčasteji PCI-e).
 - **Napajení:** 6 / 8 pin. Sběrnice není schopná dodat dostatečný přísun W. PCI-e zvládne jen 75W.
 
 Složením se jedná téměř o samostatný PC. Ale pozor! Sám o sobě není schopná fungovat. 
@@ -428,11 +428,11 @@ Pro využítí logické pipeline se využívají SW knihovny jako DirecX nebo Op
 
 ### Části pipeline
 
-- **Input Assembler (IA):** Odpovědná za načítání vertexů z paměti GPU (Vertex Buffer) a následné sestavování primitives.
-- **Vertex Shader (VS):** Zpracovává všechny vertexy vytvořené IA. Pomocí VS můžeme s verty proamově manipulovat (transformovat) a vytvářet tak např. vlnění moře. Vertexy pouze posouvá (nepřidává nebo neodstraňuje) - vstupnem je jeden vertex a výstupe je opět jeden vertex.
-- **Tesselation (TS):** Není povinná! Rozděluje jednoduchý geometrický tvar do menších částí, což má za následek celkové zvýšení detailu vykreslovaného objektu.
-- **Geometry Shader (GS):** Není povinná! Používá se pro tvorbu srsti, vlasů, trávy. Výsledkem může být shaderu vertxů více, méně nebo také vůbec žádný (tvary mohou vznika, nebo i zanikat). Po průchodu je hotová úprava geometrického modelu.
-- **Stream Output (SO):** Není povinná! Umožňuje přesměrovat hotové vertexy zpět na začátek pipeline a prováět na nich opetovné manipulace v dalších průchodech.
+- **Input Assembler (IA):** Odpovědná část za načítání vertexů z paměti GPU (Vertex Buffer) a následné sestavování primitives.
+- **Vertex Shader (VS):** Zpracovává všechny vertexy vytvořené IA. Pomocí VS můžeme s vertexy programově manipulovat (transformovat) a vytvářet tak např. vlnění moře. Vertexy pouze posouvá (nepřidává nebo neodstraňuje je) - vstupnem je jeden vertex a výstupe je opět jeden vertex.
+- **Tesselation (TS):** _Není povinná!_ Rozděluje jednoduchý geometrický tvar do menších částí, což má za následek celkové zvýšení detailů vykreslovaného objektu.
+- **Geometry Shader (GS):** _Není povinná!_ Používá se pro tvorbu srsti, vlasů, trávy. Výsledkem může být shaderu vertxů více, méně nebo také vůbec žádný (tvary mohou vznika, nebo i zanikat). Po průchodu je hotová úprava geometrického modelu.
+- **Stream Output (SO):** _Není povinná!_ Umožňuje přesměrovat hotové vertexy zpět na začátek pipeline a provádět na nich opětovné manipulace v dalších průchodech.
 - **Rasterizace - Rasterizer (RA):** Převod 3D na 2D rastrovou mřížku, aby obraz mohl být zobrazen na monitoru. Z-buffer - uložiště pro informace o hloubce pixelu. Vylučování objektů z procesu rasterizace se říká Clipping.
 - **Pixel Shader (PS):** Úkolem je zjistit barvu příslušného pixelu, který mu zaslal RA. Vypočet ovlivňován barvou textury, světlem, atd... Výstup je pak detailnější/kvalitnější.
 - **Output Merger (OM):** Do Back Bufferu se ukládá finální frame. Double buffering = Back Buffer <=> Front Buffer (slouží k prezentaci smínku na monitoru).
