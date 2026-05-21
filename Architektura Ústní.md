@@ -1144,7 +1144,7 @@ EUFI boot je rychlejší.
 
 ## Thunderbolt
 
-- Vysocho rychlostní technologie/protokol, které přes USB port umí přenášet data.
+- Vysoko rychlostní technologie/protokol, které přes USB port umí přenášet data.
 
 ## Co chce slyšet u Zkoušky
 
