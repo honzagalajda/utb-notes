@@ -212,11 +212,11 @@ Instrukce odpovídají procesoru Pentium z roku 1993 (CISC):
 - **WB (Write Back):** Zápis výsledků zpracované instrukce.
 
 Instrukční kanál RISC procesorů:
-- **Instruction fetch:** vyzvednutí instrukce.
-- **Decode:** dekódování instrukce.
-- **Execute:** provedení instrukce.
-- **Memory Access:** přístup k paměti (čtení/zápis) - při instrukcí load/store.
-- **Commit:** zápis výsledku.
+- **Instruction fetch:** Vyzvednutí instrukce.
+- **Decode:** Dekódování instrukce.
+- **Execute:** Provedení instrukce.
+- **Memory Access:** Přístup k paměti (čtení/zápis) - při instrukcí load/store.
+- **Commit:** Zápis výsledku.
 
 Hloubka pipeline (počet stupňů) u novějších procesorů narůstá, to ale nemusí znamenat nižší výkon. Když se s hloubkou pipeline navýší i taktovací frekce může být procesor stejně rychlý nebo i rychlejší.
 
@@ -260,7 +260,8 @@ Intel Pentium byl jedním z prvních komerčně úspěšných superskalárních 
 
 - **Predikce větvení (branch prediction):** používá se nejen u podmínek if/else, ale také u smyček. Moderní prediktory mohou dosahovat vysoké přesnosti (např. ~97 % u některých opakujících se vzorů).
 ![predikce větvení schema](./Screenshot%202026-05-16%20at%2015.37.10.png)
-Skok znamená, že výsledek podmínky byl _false_.
+
+  Skok znamená, že výsledek podmínky byl _false_.
 - **Superskalarita + vícenásobné načítání a dekódování.**
 - **Simultaneous Multithreading (SMT):** AMD tuto technologii označuje SMT, Intel pak Hyper-Threading (HT).
 - **Vykonání mimo pořadí (Out-of-Order execution):** Instrukce mohou být vykonávány v jiném pořadí, než ve kterém byly vydány, aby se lépe využily dostupné zdroje.
@@ -357,13 +358,13 @@ Probíhá v několika úrovních:
 
 - Současný běh více vláken je založen na využití bublin v instrukčním kanálu (pipeline stalls).
 - Navýšení výkonu je proměnlivé (převážně pomáhá při mnoha malých/rychlých operacích).
-- Počet výkonných jednotek je stejný, ale je potřeba zdvojnásobit některé registrů pro oddělení kontextů.
+- Počet výkonných jednotek je stejný, ale je potřeba zdvojnásobit počet registrů pro oddělení kontextů.
 
 ![hyper threading](./Screenshot%202026-05-16%20at%2018.28.27.png)
 
 ## Tepelná ochrana
 
-Nové čipy mají ochranu, aby se procesor nepřehřál, často v podobě vkládání instrukcí `nop`. Když je chladič špatně nainstalovaný, procesor nemusí využívat plný výkon.
+Nové čipy mají ochranu, aby se procesor nepřehřál. Chrání se snížením frekvence a napětí. Když je chladič špatně nainstalovaný, procesor nemusí využívat plný výkon.
 
 ## Co chce slyšet u zkoušky
 
@@ -394,22 +395,22 @@ Dělíme na dedikovanou (samostatný HW) a integrovaná (grafická karta přímo
 ### Části:
 
 - **GPU:** CPU posílá sadu instrukcí, které jsou zpracovány ovladačem grafické karty a vykonány procesorem karty. Oproti CPU má GPU mnohem více jader, mnoho pipelines. Optimalizované pro vektorové/maticové výpočty. GPU zapisuje jednotlivé frames (obrazy) do frame bufferu.
-- **VRAM:** Potřebnou velikost ($width [px] \times height [px] \times  colorDepth[b/px] = frameBuffer[b]$) určuje maximální možné rozlišení a počet (hloubka) barev (v dnešní době se využívá hlouba True Color $2^{24}$b) - 2D. Integrovaná GK využívá RAM. Ve 3D větší nároky na pěměť (Z-buffer, textury).
+- **VRAM:** Potřebnou velikost ($width [px] \times height [px] \times  colorDepth[b/px] = frameBuffer[b]$) určuje maximální možné rozlišení a počet (hloubka) barev (v dnešní době se využívá hloubka True Color $2^{24}$b) - 2D. Integrovaná GK využívá RAM. Ve 3D větší nároky na pěměť (Z-buffer, textury).
 - **DAC (RAMDAC) převodník:** Bylo potřeba kdydysi pro VGA, protože bylo třeba převést dig. signál na analogový. Čím větší frekvence převodníku [MHZ] tím lépe. Každé staré výstupní rozhraní potřebuje svůj převodník.
 - **BIOS:** Paměť typu ROM. Obsahuje firmware včetně definicí grafických módů a obrazových fontů. Inicializace GK probíhá v průběhu inicializace počítače (jak UEFI nastartuje v celém PC, tak spouští tento ROM BIOS).
 - **Výstupní konektory:** HDMI, DP, DVI.
 - **Sběrnice:** připojení k MB (teď nejčasteji PCI-e).
 - **Napajení:** 6 / 8 pin. Sběrnice není schopná dodat dostatečný přísun W. PCI-e zvládne jen 75W.
 
-Složením se jedná téměř o samostatný PC. Ale pozor! Sám o sobě není schopná fungovat. 
+Složením se jedná téměř o samostatný PC. Ale pozor! Sáma o sobě není schopná fungovat. 
 
-Pro využívání grafické karty v naší sestavě musíme nainstalovat driver.
+Pro správné využívání grafické karty v naší sestavě musíme nainstalovat driver. Bez něj grafická karta běží jen v základním režimu se sníženým rozlišením a berevnou hloubkou.
 
 ## Jak pracuje 3D
 
 - **Primitives:** Primitivní geometrické útvary (trojúhelník, čára, bod) - dají se z nich skálad složitější objekty.
 - **Vertex:** Vrcholy primitives. Jsou definovány umístěním v 3D prostoru (x, y, z). Mohou obsahovat i další volitelné vlastnosti jako barvy, textury, atd.
-- **Textury:** Dvourozměrné bitmapové obrázky (rastr) nebo povrchy určené k mapování primitiva. Větší nárky na VRAM.
+- **Textury:** Dvourozměrné bitmapové obrázky (rastr) nebo povrchy určené k mapování primitiva. Větší nároky na VRAM.
 
 ### Logická/grafická pipeline
 
@@ -430,7 +431,7 @@ Pro využítí logické pipeline se využívají SW knihovny jako DirecX nebo Op
 ### Části pipeline
 
 - **Input Assembler (IA):** Odpovědná část za načítání vertexů z paměti GPU (Vertex Buffer) a následné sestavování primitives.
-- **Vertex Shader (VS):** Zpracovává všechny vertexy vytvořené IA. Pomocí VS můžeme s vertexy programově manipulovat (transformovat) a vytvářet tak např. vlnění moře. Vertexy pouze posouvá (nepřidává nebo neodstraňuje je) - vstupnem je jeden vertex a výstupe je opět jeden vertex.
+- **Vertex Shader (VS):** Zpracovává všechny vertexy vytvořené IA. Pomocí VS můžeme s vertexy programově manipulovat (transformovat) a vytvářet tak např. vlnění moře. Vertexy pouze posouvá (nepřidává nebo neodstraňuje je) - vstupnem je jeden vertex a výstupem je opět jeden vertex.
 - **Tesselation (TS):** _Není povinná!_ Rozděluje jednoduchý geometrický tvar do menších částí, což má za následek celkové zvýšení detailů vykreslovaného objektu.
 - **Geometry Shader (GS):** _Není povinná!_ Používá se pro tvorbu srsti, vlasů, trávy. Výsledkem může být shaderu vertxů více, méně nebo také vůbec žádný (tvary mohou vznika, nebo i zanikat). Po průchodu je hotová úprava geometrického modelu.
 - **Stream Output (SO):** _Není povinná!_ Umožňuje přesměrovat hotové vertexy zpět na začátek pipeline a provádět na nich opětovné manipulace v dalších průchodech.
@@ -483,7 +484,7 @@ Dnes to tedy prochází přes stejné výkonné jednotky jen se liší typ výpo
 
 1. **Registry:** Přístupová rychlost 1 takt procesoru. Velikost 100B; Nejrychlejší, uloží nejméně informací, největší cena/MB.
 2. **Cache:** SRAM. L1I, L1D, L2, L3. Velikost v KB.
-3. **Oprační paměť:** DRAM. Velikost v GB.
+3. **Operační paměť:** DRAM. Velikost v GB.
 4. **Sekundární paměť:** HHD/Flash (SSD). Velikost v TB.
 5. **Terciální paměť:** Disky, DVD, RAID, NAS. Často médium může být výměnné. Velikost až v PB; Nejpomalejší, uloží nejvíce informací, nejmenší cena/MB.
 
@@ -495,7 +496,7 @@ Dnes to tedy prochází přes stejné výkonné jednotky jen se liší typ výpo
 - **Statičnost/dynamičnost:** Statické dokáži informaci uchovat v čase. Dynamické potřebují informaci neustále obnovovat.
 - **Energetická závislost:** Jestli informaci udrží jen po dobu, kdy je napájena.
 - **Přísup (sekvenční/přímy):** Přímy = kdykoliv jsme schopni přistoupit ke všem částem paměti. Sekvenční = typicky páska.
-- **Desktriktivnost při čtení:** Když informaci přečteme, tak se zničí. Typicky DRAM.
+- **Desktruktivnost při čtení:** Když informaci přečteme, tak se zničí. Typicky DRAM.
 - **Spolehlivost:** V dnešní době se zlepšuje. Jedná se o to, jak spolehlivě dokáže médiu s časem uchovat paměť bez jeho ztráty.
 - **Cena za bit:** Dá se zde také vztáhnout mooerův zákon.
 
@@ -515,9 +516,9 @@ Dnes to tedy prochází přes stejné výkonné jednotky jen se liší typ výpo
 
 ## Cache
 
-- Slouží k vyrovnávání rozdílu rychlostí mezi procesorem a operační pamětí.
+- Slouží k vyrovnávání rozdílu rychlostí mezi procesorem a operační (RAM) pamětí.
 - Paměť, která ukládá instrukce a/nebo data, aby mohly být budoucí požadavky obslouženy rychleji.
-- Mouhou se zde nacházet duplikáty dat uložených jinde (např. z RAM) nebo výsledky dřívějšího výpočtu.
+- Mouhou se zde nacházet duplikáty dat uložených jinde (např. z RAM) nebo výsledky dřívějších výpočtů.
   - **Write-trough:** Zápis se provádí synchronně jak do cache, tak do operační paměti.
   - **Write-back:** zápis se provádí pouze do cache. Zápis do hlavní paměti je doložen, dokud nemají být data v cache nahrazena novým obsahem.
 - Implementováno jako bloky paměti (cache lines).
@@ -554,7 +555,7 @@ Určuje způsob mapování bloků z RAM do bloků v cache.
 ## Přístup do paměti
 
 - Každá paměťová buňka je adresována. 
-- Adresa je přivedena na vstup dekodéru. Dekodér pak podle zadané adresy vybere jeden z adresových vodičů a nastaví na něm hodnotu $log1$. Hodnota projde/neprojde paměťovou buňkou na datový vodič. V případě, že hodnota projde přes paměťovou buňku, obdržíme na výstupu hodnotu 1. V opačném případě je na výstupu hodnota 0.
+- Adresa je přivedena na vstupu dekodéru. Dekodér pak podle zadané adresy vybere jeden z adresových vodičů a nastaví na něm hodnotu $log1$. Hodnota projde/neprojde paměťovou buňkou na datový vodič. V případě, že hodnota projde přes paměťovou buňku, obdržíme na výstupu hodnotu 1. V opačném případě je na výstupu hodnota 0.
 - Jednotlivé typy paměti se liší způsobem realizace buňky.
 
 ## ROM
@@ -622,13 +623,13 @@ Určuje způsob mapování bloků z RAM do bloků v cache.
 
 ## Paměti RAM
 
-### SRAM
+### SRAM (Static RAM)
 
 - Jednou zapsaný bit je v buňce po celou dobu.
 - Bistabilní klopný obvod. Nutnost použití 4-6 tranzistorů pro jednu paměťovou buňku (vyšší cena na jeden bit).
 - POZOR neplést s SDRAM!!!
 
-### DRAM
+### DRAM (Dynamic RAM)
 
 - Každá buňka je tvořena z trazistoru a kondenzátoru. Uchování informace pomocí náboje v kondenzátoru.
 - Nabití konenzátoru odpovídá uložení jednoho bitu.
@@ -636,10 +637,10 @@ Určuje způsob mapování bloků z RAM do bloků v cache.
 - Náboj má tendenci se vybíjet i v době, kdy je paměť připojena ke zdroji napájení. Je nutnost provádět tzv. refresh, ten se provádí po celých řádcích.
 - Dneska se nejčastěji používají paměti typu _DDR5 SDRAM_.
 
-### SDRAM (Synchronní dynamické RAM)
+### SDRAM (Synchronní Dynamická RAM)
 
-- Hodinový signál, který slouží k časování, aby běh a jednolivé akce byli synchronizovány.
-- Paměťový čip jsou složitější:
+- Hodinový signál, který slouží k časování, aby běh a jednotlivé akce byli synchronizovány.
+- Paměťový čip je složitější:
   - Rozšiřuje se protokol použitý pro přenosy dat z/do paměti.
   - Čipy většinou dokáží automaticky provádět refresh.
 - **Burst režim:** Přenos většího bloku data.
@@ -714,7 +715,7 @@ V dnešní době spíše v rámci serverů.
 
 - **Plotny disku:** Vyrábí se ze slitiny hliníku a hořčíku. Plotna je pokryta tenkou vrstvou magnetické látky. Vzdálenost hlavy od plotny ~ 3 nm.
 - **Hlavy pro čtení a zápis:** Nikdy se plotny nedotýka, pluje nad ním. Obvykle jedna hlava pro čtení a jedno pro záznam. V klidu jsou hlavy zaparkovány - automatické parkování.
-- **Pohon hlav:** Pohybuje závěsem s hlavami napříč diskem. Elektromagnetický pohon. Přesné nastavení nad požadovanou stopou se používá zpětná vazba.
+- **Pohon hlav:** Pohybuje s hlavami napříč diskem. Elektromagnetický pohon. Pro přesné nastavení nad požadovanou stopou se používá zpětná vazba.
 - **Pohon ploten disku:** Motorem přímo připojeným k hřídeli. Konstatní otáčky a bezvibrační chod (díky fluidním ložiskám).
 - **Vzduchové filtry:** 
   - **Recirkulační:** Zachytávání malých částic uvnitř disku.
@@ -840,7 +841,7 @@ Předpovídání poruch pevných disků sledováním parametrů, jestli jsou vpo
 
 - Patice pro procesor
 - Regulátor napětí pro procesor
-- Čipová sada (Severní a jižní most) - severní můstek integrován do procesoru.
+- Čipová sada (Severní a jižní most) - severní můstek integrován do procesoru jako subagent system za účelem snížení latence přenosu/čtení informací z CPU do GPU a RAM.
 - Čip pro vstupy a výstupy (Super I/O)
 - ROM BIOS (Flash ROM)/UEFI
 - Patice pro paměťové moduly
@@ -905,8 +906,8 @@ Předpovídání poruch pevných disků sledováním parametrů, jestli jsou vpo
 
 ## Uložení BIOSu
 
-- Prvně uložen v ROM, potom v EEPROM a dnes Flash ROM.
-- Nastavení z BIOSu se ukládá do NVRAM.
+- Prvně uložen v ROM, potom v EEPROM a dnes Flash EEPROM.
+- Nastavení z BIOSu se ukládá do NVRAM (když vyjmeme baterii ze základní desky může dojít k vymazání těchto dat).
 
 ## BIOS (Basic Input/Output System)
 
@@ -981,7 +982,7 @@ EUFI boot je rychlejší.
 - K systémové sběrnici připojena přes mezisběrnicový můstek.
   - Možnost použití sběrnice PCI i v jiných počítačích než jsou PC.
   - Můstek dovoluje provádět přizpůsobování napěťových úrovní.
-- Výpočet propustunisti: $4B \times 33MHz = 133 \frac{MB}{s}$
+- Výpočet propustnosti: $4B \times 33MHz = 133 \frac{MB}{s}$
   - $32b$ = přenos o šířce.
   - $33MHz$ = frekvence sběrnice.
   - Bacha u zkoušky na jednotky!!!
@@ -1168,7 +1169,7 @@ EUFI boot je rychlejší.
 
 ### Line printer
 
-- Rychle rotující řetět se znaky. Řetěz rotuje horizontálně přes celou šířku stránky a naproti němu jsou přes celou šíři kladívka, která přes pásku otiskují znaky na papír.
+- Rychle rotující řetěz se znaky. Řetěz rotuje horizontálně přes celou šířku stránky a naproti němu jsou přes celou šíři kladívka, která přes pásku otiskují znaky na papír.
 
 ## Jehličkové tiskárny
 
