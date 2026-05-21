@@ -112,13 +112,13 @@ V běžném desktopovém PC je umístěn na základní desce v patici (socket).
 
 Existují 3 základní typy socketů:
 - **Pin Grid Array (PGA)**: procesor obsahuje piny, které zapadnou do socketu základní desky.
-  - Nevýhody: piny jsou náchylné k poškození (lze je snadno ohnout).
-  - Výhody: piny se dají narovnat, i když je to složité.
+  - **Nevýhody**: piny jsou náchylné k poškození (lze je snadno ohnout).
+  - **Výhody**: piny se dají narovnat, i když je to složité.
 - **Land Grid Array (LGA)**: u Intelu procesor obsahuje plošky, které doléhají na pružinky v socketu základní desky.
-  - Výhody: výrobně jednodušší a procesor není náchylný k poškození.
-  - Nevýhody: pružinky v socketu na základní desce se špatně opravují.
+  - **Výhody**: výrobně jednodušší a procesor není náchylný k poškození.
+  - **Nevýhody**: pružinky v socketu na základní desce se špatně opravují.
 - **Ball Grid Array (BGA)**: čip je připájen přímo na desku; kontakty vypadají jako malé kuličky (balls).
-  - Nevýhody: uživatelsky nevýměnný, nelze upgradovat.
+  - **Nevýhody:** uživatelsky nevýměnný, nelze upgradovat.
 
 ## Proces výroby čipů/procesorů
 
@@ -253,6 +253,7 @@ Intel Pentium byl jedním z prvních komerčně úspěšných superskalárních 
 - **Strukturální hazard:** Konflikty při sdílení hardwarových zdrojů (např. ALU jednotek) mezi různými fázemi pipeline, což může způsobit _pipeline stall_.
 
 **Pipeline flush:** je vyprázdnění instrukčního kanálu.
+
 **Pipeline stall (bublina):** zpoždění zpracování následující instrukce.
 
 ### Minimalizace vlivu bublin (pipeline stalls):
@@ -407,10 +408,10 @@ Pro využívání grafické karty v naší sestavě musíme nainstalovat driver.
 ## Jak pracuje 3D
 
 - **Primitives:** Primitivní geometrické útvary (trojúhelník, čára, bod) - dají se z nich skálad složitější objekty.
-- **Vertex:** Vrcholy primitires. Jsou definovány umístěním v 3D prostoru (x, y, z). Mohou obsahovat i další volitelné vlastnosti jako barvy, textury, atd.
+- **Vertex:** Vrcholy primitives. Jsou definovány umístěním v 3D prostoru (x, y, z). Mohou obsahovat i další volitelné vlastnosti jako barvy, textury, atd.
 - **Textury:** Dvourozměrné bitmapové obrázky (rastr) nebo povrchy určené k mapování primitiva. Větší nárky na VRAM.
 
-## Logická/grafická pipeline
+### Logická/grafická pipeline
 
 Pro využítí logické pipeline se využívají SW knihovny jako DirecX nebo OpenGL.
 
@@ -481,7 +482,7 @@ Dnes to tedy prochází přes stejné výkonné jednotky jen se liší typ výpo
 ## Hierarchie
 
 1. **Registry:** Přístupová rychlost 1 takt procesoru. Velikost 100B; Nejrychlejší, uloží nejméně informací, největší cena/MB.
-2. **Cache:** L1I, L1D, L2, L3. Velikost v KB.
+2. **Cache:** SRAM. L1I, L1D, L2, L3. Velikost v KB.
 3. **Oprační paměť:** DRAM. Velikost v GB.
 4. **Sekundární paměť:** HHD/Flash (SSD). Velikost v TB.
 5. **Terciální paměť:** Disky, DVD, RAID, NAS. Často médium může být výměnné. Velikost až v PB; Nejpomalejší, uloží nejvíce informací, nejmenší cena/MB.
@@ -683,7 +684,7 @@ V dnešní době spíše v rámci serverů.
   - Umožňuje i detekci dvou chybných bitů (v tomto případě není možná oprava).
   - Nutnost navýšit počet bitů (1 chip navíc), 64b -> 72b.
   - **Mírné snížení výkonu:** 0,5-2%
-- Technologie Chipkill
+- **Technologie Chipkill:**
   - Rozpozná chybu v 8 bitech, korekce až ve 4 bitech.
   - Nevyžaduje speciální moduly.
   - Funkce závisí na podpoře chipsetu a BIOSu.
@@ -704,7 +705,7 @@ V dnešní době spíše v rámci serverů.
 - Magnetický záznam dat na rotující plotny.
 - Pro adresaci používájí LBA adresaci.
 - Používané typy se dělí podle:
-  - Fizické velikosti
+  - Fyzické velikosti
   - Typy rozhraní (ATA, SCSI)
   - Rychlosti otáčení (3600 rpm - 1500 rpm)
   - Přístupová doba (4 - 25 ms)
@@ -912,7 +913,7 @@ Předpovídání poruch pevných disků sledováním parametrů, jestli jsou vpo
 1. Zapne se přívod napájecího napětí.
    1. Vynulují se registry procesoru (protože by tam mohly zůstat nějaké data) a nastaví se programový čítač (registr, který udržuje adresu následující instrukci) na adresu F000h (hex).
    2. Mikroprocesor začíná vykonávt program BIOS.
-2. BIOS aktuvuje POST - určí co všechno má počítač k dispozici (paměť, CPU, atd..) a jestli vše funguje správně. Když je něco špatně, tak na to upozorňuje sekvence pípnutí/bliknutí LED.
+2. BIOS aktivuje POST - určí co všechno má počítač k dispozici (paměť, CPU, atd..) a jestli vše funguje správně. Když je něco špatně, tak na to upozorňuje sekvence pípnutí/bliknutí LED.
 3. Identifikace všech periferních zařízení - nejprve vyhledá zařízení typu Plug-and-Play.
 4. Vyhledání jednotky pro zavedení OS nebo pro načtení inicializačního programu.
 5. Sestavení tabulky systémových prostředků - přidělení nekonfliktní zdroje podle identifikovaných zařízení.
@@ -942,7 +943,7 @@ EUFI boot je rychlejší.
 - Skupina signálových vodičů
 - Mají za úkol zajistit přenos dat, stavů, adresy a řídících povelů mezi dvěma a více zařízeními.
 - Přenos dat na sběrnici se řídí stanoveným protokolem.
-- Sběrnice jsou na konci vybaveny konektory uzpůsobených pro připojení modulů.
+- Sběrnice jsou na konci vybaveny konektory uzpůsobených pro připojení modul/komponent.
 
 ## Typy sběrnic
 
@@ -978,8 +979,8 @@ EUFI boot je rychlejší.
 ## PCI
 
 - K systémové sběrnici připojena přes mezisběrnicový můstek.
-  - Možnost použití sběrnice PCI i v jiných počátačích než jsou PC.
-  - Můstek dovoluje provádět přizpůsobování napšťových úrovní.
+  - Možnost použití sběrnice PCI i v jiných počítačích než jsou PC.
+  - Můstek dovoluje provádět přizpůsobování napěťových úrovní.
 - Výpočet propustunisti: $4B \times 33MHz = 133 \frac{MB}{s}$
   - $32b$ = přenos o šířce.
   - $33MHz$ = frekvence sběrnice.
