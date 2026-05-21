@@ -524,7 +524,7 @@ Dnes to tedy prochází přes stejné výkonné jednotky jen se liší typ výpo
 - Implementováno jako bloky paměti (cache lines).
 - **Cache hit:** Nalezneme informaci v cache. 
 - **Cache miss:** Informaci jsme nenašeli, tak jdeme do vyšších úrovní paměti (např. RAM) a přeneseme ji do vyrovnávací paměti.
-- **Princip lokality:** Pokud přistupujeme k hodnotě v paměti, tak s velkou pravděpodobností budeme přistupovat i k okolním informacím. To se využívá u _cache miss_.
+- **Princip lokality:** Pokud přistupujeme k hodnotě v RAM paměti, tak s velkou pravděpodobností budeme přistupovat i k okolním informacím. To se využívá u _cache miss_.
 - **Efektivita**: 98 % až 99 %.
 - **Úrovně vyrovnávací paměti:** L1I, L1D, L2 a L3
 - **Buffer vs. Cache:** Buffer slouží k tomu, že do něj něco v určitém pořadí nejprve nahrajeme a potom to z něj v nějakém pořadí nahráváme nebo načítáme někam jinam. Do cache zapisujeme a načítáme z ní kdy potřebujeme.
@@ -604,8 +604,8 @@ Určuje způsob mapování bloků z RAM do bloků v cache.
   - Všechny přivedené elektrony jsou zde "uvězněny" a tím je uložená informace.
 - Elektrony na FG, modifikují (částečně ruší) elektrické pole přicházející z CG, což modifikuje prahové napětí ($U_t$) buňky.
 - **Čtení:** el. napětí na CG -> průchod proudu překládáme jako Log1
-- Není možné přistupovat k jednotlivým buňkám.
-- Zápis se provádí po celých stránkách (~2-16 kiB) a mazání po blocích (32-512 pages). Když smaže něco navíc, co jsme nechtěli musí to znovu nahrát.
+- Při zápisu není možné přistupovat k jednotlivým buňkám.
+  - Zápis se provádí po celých stránkách (~2-16 kiB) a mazání po blocích (32-512 pages). Když smaže něco navíc, co jsme nechtěli musí to znovu nahrát.
 - Buňky mohou nabívat více stavů než jen 1 a 0 díky uložené úrovni el. náboje.
   - **Single-level cell (SLC):** pouze 1 bit => 2 stavy.
   - **Multi-level cell (MLC):** 2 bity => 4 stavy.
